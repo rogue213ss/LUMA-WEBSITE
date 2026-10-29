@@ -16,7 +16,10 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
   const [email, setEmail] = useState('');
   const [tier, setTier] = useState<'trial' | 'lifetime' | 'exclusive'>(selectedTierId);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [serverMessage, setServerMessage] = useState<string | null>(null);
   const [showHaveCodeHelp, setShowHaveCodeHelp] = useState(false);
 
   // Sync selected tier if opened with specific prop
@@ -25,6 +28,7 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
       setTier(selectedTierId);
     }
     setFormError(null);
+    setSubmitError(null);
   }, [selectedTierId]);
 
   if (!isOpen) return null;
@@ -38,7 +42,7 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
     return regex.test(trimmed);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmedEmail = email.trim();
     
@@ -51,17 +55,40 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
       return;
     }
 
-    try {
-      // Store locally without external trackers
-      const list = JSON.parse(localStorage.getItem('luma_launch_waitlist') || '[]');
-      list.push({ email: trimmedEmail, tier, timestamp: new Date().toISOString() });
-      localStorage.setItem('luma_launch_waitlist', JSON.stringify(list));
-    } catch {
-      // Fallback
-    }
-
     setFormError(null);
-    setIsSubmitted(true);
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    const apiBase = (import.meta.env.VITE_LUMA_AUTH_API as string) || 'https://luma-tester-auth-api.garia2955.workers.dev';
+
+    try {
+      const response = await fetch(`${apiBase}/api/tester/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: trimmedEmail,
+          tier,
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        if (response.status === 429) {
+          throw new Error('Too many requests. Please wait a few minutes before trying again.');
+        }
+        throw new Error(data.error || 'Unable to submit your request right now. Please try again later.');
+      }
+
+      setServerMessage(data.message || 'Your request has been received. Beta invitations are sent manually, so please wait for an email.');
+      setIsSubmitted(true);
+    } catch (err: any) {
+      setSubmitError(err.message || 'Unable to connect to the authorization server. Please check your network and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -90,11 +117,17 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
             </div>
 
             <h3 className="text-2xl font-bold text-white tracking-tight">
-              {isTrial ? "You're registered for 7-Day Tester Access!" : "You're on the priority launch list!"}
+              Request Received
             </h3>
 
             <p className="text-sm text-muted max-w-sm mx-auto leading-relaxed">
-              We've registered <span className="text-white font-medium">{email}</span> for <span className="text-luma-blue font-semibold">{currentTier.name}</span>.
+              {serverMessage ? (
+                <span>{serverMessage}</span>
+              ) : (
+                <>
+                  We've registered your beta request for <span className="text-white font-medium">{email}</span>. Beta invitations are reviewed and sent manually, so please wait for an invitation email.
+                </>
+              )}
             </p>
 
             {/* Trial access delay reassurance in success screen */}
@@ -102,12 +135,12 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
               <div className="p-4 rounded-xl bg-surface-card border border-luma-blue/30 text-xs text-left text-muted-light space-y-2">
                 <div className="flex items-center gap-1.5 text-luma-blue font-semibold">
                   <Clock className="w-4 h-4 shrink-0" />
-                  <span>What happens next:</span>
+                  <span>Next steps &amp; trial guarantee:</span>
                 </div>
-                <ul className="space-y-1 text-[11px] list-disc list-inside text-muted-light">
-                  <li><strong>Rollout Waves:</strong> Invitations with your unique code (<code className="text-sky-300">LUMA-TEST-XXXX-XXXX</code>) are sent via email in batches.</li>
-                  <li><strong>Full 7 Days Guaranteed:</strong> Your 7-day evaluation window does not begin today. It starts only when you enter your code and activate the Windows app.</li>
-                  <li><strong>No Payment Required:</strong> No credit card or billing information is needed for the trial.</li>
+                <ul className="space-y-1.5 text-[11px] list-disc list-inside text-muted-light">
+                  <li><strong>Manual Review:</strong> Invitations with your activation code (<code className="text-sky-300">LUMA-TEST-XXXX-XXXX</code>) and download instructions are sent manually.</li>
+                  <li><strong>7 Full Days Guaranteed:</strong> Your 7-day evaluation window does not begin today. It starts strictly when you enter your code and activate the Windows app.</li>
+                  <li><strong>No Payment Required:</strong> No credit card or billing details are required for the trial.</li>
                 </ul>
               </div>
             )}
@@ -234,13 +267,39 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
                 )}
               </div>
 
+              {submitError && (
+                <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-300 flex items-start gap-2">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-400 mt-0.5" />
+                  <div className="flex-1 space-y-1">
+                    <p>{submitError}</p>
+                    <button
+                      type="button"
+                      onClick={handleSubmit}
+                      className="text-[11px] text-white underline font-semibold hover:text-rose-200"
+                    >
+                      Try Again
+                    </button>
+                  </div>
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold text-sm shadow-glow-sm hover:shadow-glow-md transition-all flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm shadow-glow-sm hover:shadow-glow-md transition-all flex items-center justify-center gap-2"
               >
-                {isTrial ? <Sparkles className="w-4 h-4" /> : <Bell className="w-4 h-4" />}
-                <span>{isTrial ? 'Claim 7-Day Free Trial' : 'Notify Me At Launch'}</span>
-                <ArrowRight className="w-4 h-4 ml-1" />
+                {isSubmitting ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span>Submitting Request...</span>
+                  </>
+                ) : (
+                  <>
+                    {isTrial ? <Sparkles className="w-4 h-4" /> : <Bell className="w-4 h-4" />}
+                    <span>{isTrial ? 'Request 7-Day Beta Access' : 'Request Launch Notification'}</span>
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </>
+                )}
               </button>
             </form>
 
