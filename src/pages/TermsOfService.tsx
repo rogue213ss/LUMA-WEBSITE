@@ -42,7 +42,7 @@ export const TermsOfService: React.FC<TermsProps> = ({ onBack }) => {
             1. Agreement to Terms
           </h2>
           <p>
-            By downloading, installing, or purchasing a license to Project Luma (<strong className="text-white">"Software"</strong>, <strong className="text-white">"Service"</strong>), you agree to be bound by these Terms of Service between you and <code className="text-white bg-surface-card px-1.5 py-0.5 rounded font-mono">[Your Company / Legal Entity Name]</code>. If you do not agree, do not install or use the Software.
+            By downloading, installing, or purchasing a license to Project Luma (<strong className="text-white">"Software"</strong>, <strong className="text-white">"Service"</strong>), you agree to be bound by these Terms of Service between you and <span className="text-white font-medium">Project Luma Team</span>. If you do not agree, do not install or use the Software.
           </p>
         </section>
 
@@ -95,7 +95,7 @@ export const TermsOfService: React.FC<TermsProps> = ({ onBack }) => {
             6. Disclaimer of Warranties &amp; Limitation of Liability
           </h2>
           <p>
-            The Software is provided on an "AS IS" and "AS AVAILABLE" basis. While rigorously tested, to the maximum extent permitted by applicable law, <code className="text-white bg-surface-card px-1.5 py-0.5 rounded font-mono">[Your Company / Legal Entity Name]</code> disclaims all warranties, express or implied.
+            The Software is provided on an "AS IS" and "AS AVAILABLE" basis. While rigorously tested, to the maximum extent permitted by applicable law, <span className="text-white font-medium">Project Luma Team</span> disclaims all warranties, express or implied.
           </p>
         </section>
 
@@ -104,7 +104,7 @@ export const TermsOfService: React.FC<TermsProps> = ({ onBack }) => {
             7. Governing Law
           </h2>
           <p>
-            These Terms shall be governed by and construed in accordance with the laws of <code className="text-white bg-surface-card px-1.5 py-0.5 rounded font-mono">[Your State / Country Jurisdiction]</code>, without regard to conflict of law principles.
+            These Terms shall be governed by and construed in accordance with applicable consumer protection and digital software laws, without regard to conflict of law principles.
           </p>
         </section>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Monitor, HelpCircle, Send, CheckCircle2, Key, Cpu, Volume2 } from 'lucide-react';
+import { ArrowLeft, Monitor, HelpCircle, Send, CheckCircle2, Key, Cpu, Volume2, ShieldCheck, Mail } from 'lucide-react';
 
 interface SupportProps {
   onBack: () => void;
@@ -28,13 +28,13 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
         <span>Return to Project Luma</span>
       </button>
 
-      {/* Draft Disclaimer Notice */}
-      <div className="p-4 rounded-xl bg-surface-card border border-amber-500/30 text-amber-300 text-xs mb-8 flex items-start gap-3">
-        <span className="font-mono font-bold uppercase shrink-0 px-2 py-0.5 rounded bg-amber-500/20">
-          Editable Draft
+      {/* Tester Program Notice */}
+      <div className="p-4 rounded-xl bg-surface-card border border-luma-blue/30 text-xs mb-8 flex items-start gap-3">
+        <span className="font-mono font-bold uppercase shrink-0 px-2 py-0.5 rounded bg-luma-blue/15 text-luma-blue">
+          Early Access &amp; Testers
         </span>
-        <p>
-          Support contact channels and response times contain placeholders <code className="text-white bg-black/40 px-1 py-0.5 rounded font-mono">[support@lumaplayer.com]</code> to be updated with your active support inbox.
+        <p className="text-muted-light">
+          Welcome to the Project Luma tester hub. If you received a <code className="text-white bg-black/40 px-1 py-0.5 rounded font-mono">LUMA-TEST</code> invitation code, refer to the diagnostic guide below or reach our team directly at <a href="mailto:support@lumaplayer.com" className="text-luma-blue underline">support@lumaplayer.com</a>.
         </p>
       </div>
 
@@ -91,6 +91,21 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+            {/* Tester Activation Code Guide */}
+            <div className="p-5 rounded-xl bg-surface-card border border-luma-blue/30 space-y-2">
+              <h3 className="font-semibold text-white flex items-center gap-2">
+                <Key className="w-4 h-4 text-luma-blue" />
+                <span>Tester Code Activation Help</span>
+              </h3>
+              <p className="text-muted leading-relaxed">
+                1. <strong>Code Format:</strong> Codes follow the format <code className="text-white font-mono bg-surface px-1 py-0.5 rounded">LUMA-TEST-XXXX-XXXX</code>. Ensure no extra spaces are copied.
+                <br />
+                2. <strong>Device Binding:</strong> Each code locks to your specific Windows PC on first activation. Re-installing on the same PC will automatically re-authorize.
+                <br />
+                3. <strong>Offline Grace:</strong> After online activation, Luma operates offline for up to 14 days before needing a background refresh.
+              </p>
+            </div>
+
             <div className="p-5 rounded-xl bg-surface-card border border-surface-border space-y-2">
               <h3 className="font-semibold text-white flex items-center gap-2">
                 <Volume2 className="w-4 h-4 text-amber-400" />
@@ -121,18 +136,6 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
 
             <div className="p-5 rounded-xl bg-surface-card border border-surface-border space-y-2">
               <h3 className="font-semibold text-white flex items-center gap-2">
-                <Key className="w-4 h-4 text-emerald-400" />
-                <span>Keyboard Shortcuts Quick Reference</span>
-              </h3>
-              <div className="space-y-1 font-mono text-xs text-muted-light pt-1">
-                <div><kbd className="px-1.5 py-0.5 rounded bg-surface border border-surface-border text-white">Ctrl+Shift+F</kbd> — Enter/Leave Fullscreen Visual Worlds</div>
-                <div><kbd className="px-1.5 py-0.5 rounded bg-surface border border-surface-border text-white">M / Shift+M</kbd> — Cycle Next / Previous Visual Mode</div>
-                <div><kbd className="px-1.5 py-0.5 rounded bg-surface border border-surface-border text-white">Esc</kbd> — Return to Compact Desktop Companion</div>
-              </div>
-            </div>
-
-            <div className="p-5 rounded-xl bg-surface-card border border-surface-border space-y-2">
-              <h3 className="font-semibold text-white flex items-center gap-2">
                 <Cpu className="w-4 h-4 text-purple-400" />
                 <span>Adaptive Low-Performance Tier</span>
               </h3>
@@ -143,21 +146,46 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
           </div>
         </section>
 
-        {/* Contact Form / Channel Details */}
+        {/* Keyboard Shortcuts Reference */}
+        <section className="p-5 rounded-xl bg-surface-card border border-surface-border space-y-3">
+          <h3 className="font-semibold text-white flex items-center gap-2 text-sm sm:text-base">
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <span>Keyboard Shortcuts Quick Reference</span>
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs text-muted-light pt-1">
+            <div className="p-2.5 rounded-lg bg-surface border border-surface-border">
+              <kbd className="px-1.5 py-0.5 rounded bg-surface-card border border-surface-border text-white mr-1.5">Ctrl+Shift+F</kbd>
+              <span>Toggle Fullscreen Worlds</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-surface border border-surface-border">
+              <kbd className="px-1.5 py-0.5 rounded bg-surface-card border border-surface-border text-white mr-1.5">M / Shift+M</kbd>
+              <span>Cycle Visual Modes</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-surface border border-surface-border">
+              <kbd className="px-1.5 py-0.5 rounded bg-surface-card border border-surface-border text-white mr-1.5">Esc</kbd>
+              <span>Return to Desktop Bar</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Support Team */}
         <section className="rounded-2xl bg-surface-card border border-surface-border p-6 sm:p-8">
-          <h2 className="text-xl font-bold text-white tracking-tight mb-2">
-            Contact Support Team
-          </h2>
+          <div className="flex items-center gap-2 mb-2">
+            <Mail className="w-5 h-5 text-luma-blue" />
+            <h2 className="text-xl font-bold text-white tracking-tight">
+              Contact Support Team
+            </h2>
+          </div>
           <p className="text-sm text-muted mb-6">
-            Need direct help or have a compatibility question? Send a message below or contact us at <code className="text-white bg-surface px-1.5 py-0.5 rounded font-mono">[support@lumaplayer.com]</code>.
+            Have a tester question or compatibility issue? You can reach us directly at <a href="mailto:support@lumaplayer.com" className="text-white underline font-mono">support@lumaplayer.com</a> or send a note below.
           </p>
 
           {formSubmitted ? (
             <div className="p-6 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-2">
               <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto" />
-              <h3 className="text-lg font-bold text-white">Support Request Received</h3>
+              <h3 className="text-lg font-bold text-white">Support Request Logged</h3>
               <p className="text-xs text-muted max-w-md mx-auto">
-                Thank you for reaching out. We will review your message and reply to <strong className="text-white">{ticketEmail}</strong> within 1–2 business days.
+                Thank you for your feedback. Our team will review your report and reply to <strong className="text-white">{ticketEmail}</strong> promptly.
               </p>
             </div>
           ) : (
@@ -185,7 +213,7 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
                   required
                   value={ticketSubject}
                   onChange={(e) => setTicketSubject(e.target.value)}
-                  placeholder="e.g., Windows Audio device loopback question"
+                  placeholder="e.g., Windows Audio device loopback or tester code issue"
                   className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm outline-none focus:border-luma-blue"
                 />
               </div>
@@ -209,7 +237,7 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
                 className="px-6 py-3 rounded-xl bg-surface hover:bg-surface-hover border border-luma-blue/50 text-white text-sm font-semibold flex items-center gap-2 transition-all shadow-glow-sm"
               >
                 <Send className="w-4 h-4 text-luma-blue" />
-                <span>Submit Support Ticket (Draft Demo)</span>
+                <span>Send Message to Support</span>
               </button>
             </form>
           )}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Check, Bell, Shield, ArrowRight, Clock, Sparkles } from 'lucide-react';
+import { X, Check, Bell, Shield, ArrowRight, Clock, Sparkles, Key, AlertCircle } from 'lucide-react';
 import { PRICING_TIERS } from '../data/mockData';
 
 interface ComingSoonModalProps {
@@ -16,12 +16,15 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
   const [email, setEmail] = useState('');
   const [tier, setTier] = useState<'trial' | 'lifetime' | 'exclusive'>(selectedTierId);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [showHaveCodeHelp, setShowHaveCodeHelp] = useState(false);
 
   // Sync selected tier if opened with specific prop
   React.useEffect(() => {
     if (selectedTierId) {
       setTier(selectedTierId);
     }
+    setFormError(null);
   }, [selectedTierId]);
 
   if (!isOpen) return null;
@@ -29,19 +32,35 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
   const currentTier = PRICING_TIERS.find(t => t.id === tier) || PRICING_TIERS[0];
   const isTrial = tier === 'trial';
 
+  const validateEmail = (val: string) => {
+    const trimmed = val.trim();
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(trimmed);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !email.includes('@')) return;
+    const trimmedEmail = email.trim();
+    
+    if (!trimmedEmail) {
+      setFormError('Please enter your email address.');
+      return;
+    }
+    if (!validateEmail(trimmedEmail)) {
+      setFormError('Please enter a valid email address (e.g., name@domain.com).');
+      return;
+    }
 
     try {
       // Store locally without external trackers
       const list = JSON.parse(localStorage.getItem('luma_launch_waitlist') || '[]');
-      list.push({ email, tier, timestamp: new Date().toISOString() });
+      list.push({ email: trimmedEmail, tier, timestamp: new Date().toISOString() });
       localStorage.setItem('luma_launch_waitlist', JSON.stringify(list));
     } catch {
       // Fallback
     }
 
+    setFormError(null);
     setIsSubmitted(true);
   };
 
@@ -71,30 +90,32 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
             </div>
 
             <h3 className="text-2xl font-bold text-white tracking-tight">
-              {isTrial ? "You're registered for the 7-Day Free Trial!" : "You're on the priority launch list!"}
+              {isTrial ? "You're registered for 7-Day Tester Access!" : "You're on the priority launch list!"}
             </h3>
 
             <p className="text-sm text-muted max-w-sm mx-auto leading-relaxed">
-              We've reserved your spot for <span className="text-white font-medium">{email}</span> to access <span className="text-luma-blue font-semibold">{currentTier.name} ({currentTier.price})</span>.
+              We've registered <span className="text-white font-medium">{email}</span> for <span className="text-luma-blue font-semibold">{currentTier.name}</span>.
             </p>
 
             {/* Trial access delay reassurance in success screen */}
             {isTrial && (
-              <div className="p-3.5 rounded-xl bg-surface-card border border-luma-blue/30 text-xs text-left text-muted-light space-y-1">
+              <div className="p-4 rounded-xl bg-surface-card border border-luma-blue/30 text-xs text-left text-muted-light space-y-2">
                 <div className="flex items-center gap-1.5 text-luma-blue font-semibold">
                   <Clock className="w-4 h-4 shrink-0" />
-                  <span>Your 7 Full Days Are Guaranteed:</span>
+                  <span>What happens next:</span>
                 </div>
-                <p className="text-[11px] leading-relaxed">
-                  If your access isn't ready yet, don't worry. Your trial will be extended so you get the full 7 days to enjoy Luma once access is available. Waiting for access will not eat into your trial period.
-                </p>
+                <ul className="space-y-1 text-[11px] list-disc list-inside text-muted-light">
+                  <li><strong>Rollout Waves:</strong> Invitations with your unique code (<code className="text-sky-300">LUMA-TEST-XXXX-XXXX</code>) are sent via email in batches.</li>
+                  <li><strong>Full 7 Days Guaranteed:</strong> Your 7-day evaluation window does not begin today. It starts only when you enter your code and activate the Windows app.</li>
+                  <li><strong>No Payment Required:</strong> No credit card or billing information is needed for the trial.</li>
+                </ul>
               </div>
             )}
 
-            <div className="pt-4">
+            <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-2">
               <button
                 onClick={onClose}
-                className="px-6 py-2.5 rounded-xl bg-surface-card border border-surface-border text-white text-sm font-medium hover:bg-surface transition-colors"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-surface-card border border-surface-border text-white text-sm font-medium hover:bg-surface transition-colors"
               >
                 Close Preview
               </button>
@@ -106,7 +127,7 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-xs font-mono uppercase tracking-wider text-luma-blue">
-                {isTrial ? 'Primary Offer • 7-Day Free Trial' : 'Phase 1 Preview • Public Launch Coming Soon'}
+                {isTrial ? 'Early Access • 7-Day Free Trial' : 'Phase 1 Preview • Public Launch Coming Soon'}
               </span>
             </div>
 
@@ -141,7 +162,7 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
             <div className="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-surface border border-surface-border text-center">
               <button
                 type="button"
-                onClick={() => setTier('trial')}
+                onClick={() => { setTier('trial'); setFormError(null); }}
                 className={`py-2 px-2 rounded-lg text-xs font-semibold transition-all ${
                   tier === 'trial'
                     ? 'bg-surface-card text-white border border-luma-blue/50 shadow-sm'
@@ -152,7 +173,7 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
               </button>
               <button
                 type="button"
-                onClick={() => setTier('lifetime')}
+                onClick={() => { setTier('lifetime'); setFormError(null); }}
                 className={`py-2 px-2 rounded-lg text-xs font-semibold transition-all ${
                   tier === 'lifetime'
                     ? 'bg-surface-card text-white border border-luma-blue/40 shadow-sm'
@@ -163,7 +184,7 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
               </button>
               <button
                 type="button"
-                onClick={() => setTier('exclusive')}
+                onClick={() => { setTier('exclusive'); setFormError(null); }}
                 className={`py-2 px-2 rounded-lg text-xs font-semibold transition-all ${
                   tier === 'exclusive'
                     ? 'bg-surface-card text-white border border-luma-violet/40 shadow-sm'
@@ -195,12 +216,22 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
                 </label>
                 <input
                   type="email"
-                  required
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (formError) setFormError(null);
+                  }}
                   placeholder="you@domain.com"
-                  className="w-full px-4 py-3 rounded-xl bg-surface border border-surface-border text-white text-sm outline-none focus:border-luma-blue transition-colors placeholder:text-muted-dark"
+                  className={`w-full px-4 py-3 rounded-xl bg-surface border text-white text-sm outline-none transition-colors placeholder:text-muted-dark ${
+                    formError ? 'border-rose-500/80 focus:border-rose-400' : 'border-surface-border focus:border-luma-blue'
+                  }`}
                 />
+                {formError && (
+                  <div className="flex items-center gap-1.5 text-xs text-rose-400 mt-1.5">
+                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>{formError}</span>
+                  </div>
+                )}
               </div>
 
               <button
@@ -212,6 +243,29 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
                 <ArrowRight className="w-4 h-4 ml-1" />
               </button>
             </form>
+
+            {/* Already have code prompt */}
+            <div className="pt-1 text-center">
+              <button
+                type="button"
+                onClick={() => setShowHaveCodeHelp(!showHaveCodeHelp)}
+                className="text-xs text-muted-dark hover:text-luma-blue transition-colors inline-flex items-center gap-1 font-mono"
+              >
+                <Key className="w-3 h-3" />
+                <span>{showHaveCodeHelp ? "Hide activation help" : "Already have an activation code?"}</span>
+              </button>
+
+              {showHaveCodeHelp && (
+                <div className="mt-2.5 p-3 rounded-xl bg-surface-card border border-surface-border text-left text-xs text-muted-light space-y-1.5 animate-in fade-in duration-150">
+                  <p className="font-medium text-white">How to activate your tester build:</p>
+                  <ol className="list-decimal list-inside space-y-1 text-[11px] text-muted">
+                    <li>Launch the Luma desktop app on your Windows 10/11 PC.</li>
+                    <li>Enter your invitation code (format: <code className="text-sky-300 font-mono">LUMA-TEST-XXXX-XXXX</code>).</li>
+                    <li>Click <strong>Activate Luma</strong>. Your device will bind securely and unlock the full experience.</li>
+                  </ol>
+                </div>
+              )}
+            </div>
 
             {/* Privacy Promise */}
             <div className="flex items-center gap-2 text-[11px] text-muted-dark justify-center pt-1">

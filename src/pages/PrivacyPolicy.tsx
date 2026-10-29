@@ -42,7 +42,7 @@ export const PrivacyPolicy: React.FC<PolicyProps> = ({ onBack }) => {
             1. Core Privacy Philosophy
           </h2>
           <p>
-            Project Luma (<strong className="text-white">"Luma"</strong>, <strong className="text-white">"we"</strong>, <strong className="text-white">"us"</strong>), operated by <code className="text-white bg-surface-card px-1.5 py-0.5 rounded font-mono">[Your Company / Legal Entity Name]</code>, is designed with a fundamental commitment to privacy: <span className="text-white font-medium">what you listen to on your personal computer is entirely your own business</span>.
+            Project Luma (<strong className="text-white">"Luma"</strong>, <strong className="text-white">"we"</strong>, <strong className="text-white">"us"</strong>), operated by <span className="text-white font-medium">Project Luma Team</span>, is designed with a fundamental commitment to privacy: <span className="text-white font-medium">what you listen to on your personal computer is entirely your own business</span>.
           </p>
           <p>
             Luma does not include telemetry trackers, does not sell your data, does not profile listening habits, and does not record audio.
@@ -121,11 +121,11 @@ export const PrivacyPolicy: React.FC<PolicyProps> = ({ onBack }) => {
             For privacy inquiries, please contact:
             <br />
             <span className="text-white font-mono text-xs">
-              Email: [Insert Contact Email, e.g. privacy@lumaplayer.com]
+              Email: <a href="mailto:privacy@lumaplayer.com" className="text-luma-blue underline">privacy@lumaplayer.com</a>
             </span>
             <br />
-            <span className="text-white font-mono text-xs">
-              Entity: [Insert Company Name and Registered Jurisdiction]
+            <span className="text-muted-light font-mono text-xs">
+              Entity: Project Luma Team
             </span>
           </p>
         </section>

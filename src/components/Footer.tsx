@@ -44,7 +44,14 @@ export const Footer: FC<FooterProps> = ({ onNavigate }) => {
 
             <div className="flex items-center gap-3 pt-1">
               <span className="text-xs text-muted-light font-medium">Follow:</span>
-              <span className="text-luma-blue font-mono text-xs">@luma.player</span>
+              <a 
+                href="https://x.com/luma_player" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-luma-blue font-mono text-xs hover:underline inline-flex items-center gap-1"
+              >
+                @luma.player
+              </a>
             </div>
           </div>
 

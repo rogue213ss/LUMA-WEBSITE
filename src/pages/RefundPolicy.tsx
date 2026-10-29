@@ -105,7 +105,7 @@ export const RefundPolicy: React.FC<RefundProps> = ({ onBack }) => {
           </ol>
           <div className="pt-2">
             <p className="text-white font-mono text-xs">
-              Support Email: [Insert Support Email, e.g. refunds@lumaplayer.com]
+              Support Email: <a href="mailto:refunds@lumaplayer.com" className="text-luma-blue underline">refunds@lumaplayer.com</a>
             </p>
           </div>
         </section>
