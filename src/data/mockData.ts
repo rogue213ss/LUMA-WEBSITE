@@ -125,6 +125,26 @@ export const VISUAL_MODES: VisualModeInfo[] = [
 
 export const PRICING_TIERS: PricingTier[] = [
   {
+    id: 'trial',
+    name: '7-Day Free Trial',
+    price: 'Free',
+    period: '7 days full access',
+    headline: 'Experience full music-reactive lighting, cinematic lyrics, and all 8 visual worlds on Windows with zero risk.',
+    badge: 'Primary Offer • 7-Day Access',
+    features: [
+      'Full access to all 8 Visual Worlds',
+      'Music-reactive 4-edge ambient screen glow',
+      'Cinematic synchronized lyrics & local .lrc support',
+      'Windows GSMTC & WASAPI audio loopback',
+      'No credit card required to request trial access',
+      'Full 7-day period begins only when your build is active',
+      'Trial extended if access is delayed—you always get the full 7 days'
+    ],
+    highlighted: true,
+    ctaText: 'Try Luma Free for 7 Days',
+    delayNotice: "If your access isn't ready yet, don't worry. Your trial will be extended so you get the full 7 days to enjoy Luma once access is available."
+  },
+  {
     id: 'lifetime',
     name: 'Luma Lifetime',
     price: '$5.99',
@@ -163,12 +183,22 @@ export const PRICING_TIERS: PricingTier[] = [
       '100% private: zero telemetry, on-device audio analysis',
       'One-time payment, no subscription'
     ],
-    highlighted: true,
+    highlighted: false,
     ctaText: 'Choose Exclusive ($9.99)'
   }
 ];
 
 export const FAQS: FAQItem[] = [
+  {
+    category: 'Licensing & Pricing',
+    question: 'How does the 7-Day Free Trial work?',
+    answer: 'The 7-day free trial gives you complete, unrestricted access to Project Luma on your Windows PC—including all 8 visual worlds, music-reactive 4-edge lighting, and synchronized lyrics. You can test Luma thoroughly with your existing music apps (Spotify, YouTube, local files) with zero upfront cost and no credit card required.'
+  },
+  {
+    category: 'Licensing & Pricing',
+    question: 'Does waiting for trial access eat into my 7 days?',
+    answer: 'Not at all. If your access isn\'t ready yet, don\'t worry. Your trial will be extended so you get the full 7 days to enjoy Luma once access is available. The 7-day evaluation window begins strictly when your build is delivered and activated on your machine—never while you are waiting on the rollout list.'
+  },
   {
     category: 'General',
     question: 'What is Luma?',
@@ -187,7 +217,7 @@ export const FAQS: FAQItem[] = [
   {
     category: 'Licensing & Pricing',
     question: 'Does Luma require a monthly subscription?',
-    answer: 'No. Both Luma Lifetime ($5.99) and Luma Exclusive ($9.99) are strictly one-time purchases. There are no recurring fees, subscriptions, or hidden upkeep charges.'
+    answer: 'No. Project Luma does not use recurring monthly subscriptions. You can start with our 7-Day Free Trial, and if you choose to keep Luma, permanent ownership is a simple one-time payment ($5.99 for Lifetime or $9.99 for Exclusive).'
   },
   {
     category: 'Licensing & Pricing',

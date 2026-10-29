@@ -1,8 +1,8 @@
 import React from 'react';
-import { Sparkles, ArrowRight, ShieldCheck, Monitor } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, Monitor, Clock } from 'lucide-react';
 
 interface FinalCTAProps {
-  onOpenPricingModal: (tierId?: 'lifetime' | 'exclusive') => void;
+  onOpenPricingModal: (tierId?: 'trial' | 'lifetime' | 'exclusive') => void;
 }
 
 export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenPricingModal }) => {
@@ -21,7 +21,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenPricingModal }) => {
             <span className="w-2 h-2 rounded-full bg-emerald-400" />
             <span>Windows Desktop Companion</span>
             <span className="text-muted-dark">•</span>
-            <span className="text-luma-blue font-mono font-medium">One-Time Purchase</span>
+            <span className="text-emerald-400 font-mono font-medium">7-Day Free Trial Available</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
@@ -29,26 +29,33 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenPricingModal }) => {
           </h2>
 
           <p className="text-muted text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-            Music-reactive lighting, cinematic lyrics, and 8 immersive visual worlds for Windows. No subscriptions. No tracking.
+            Music-reactive lighting, cinematic lyrics, and 8 immersive visual worlds for Windows. Try everything free for 7 days.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
             <button
-              onClick={() => onOpenPricingModal('lifetime')}
+              onClick={() => onOpenPricingModal('trial')}
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold text-base shadow-glow-md hover:shadow-glow-lg transition-all duration-200 flex items-center justify-center gap-2.5 group"
             >
-              <span>Get Luma Lifetime</span>
-              <span className="px-2 py-0.5 rounded-md bg-black/20 text-xs font-mono font-medium">$5.99</span>
+              <Sparkles className="w-4 h-4 text-sky-200" />
+              <span>Try Luma Free for 7 Days</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
             <button
-              onClick={() => onOpenPricingModal('exclusive')}
-              className="w-full sm:w-auto px-6 py-4 rounded-xl bg-surface hover:bg-surface-hover border border-luma-violet/40 hover:border-luma-violet text-white font-medium text-base transition-colors flex items-center justify-center gap-2"
+              onClick={() => onOpenPricingModal('lifetime')}
+              className="w-full sm:w-auto px-6 py-4 rounded-xl bg-surface hover:bg-surface-hover border border-surface-border hover:border-luma-blue/40 text-white font-medium text-base transition-colors flex items-center justify-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-luma-violet" />
-              <span>Luma Exclusive ($9.99)</span>
+              <span>Lifetime Access ($5.99)</span>
             </button>
+          </div>
+
+          {/* Reassurance text */}
+          <div className="max-w-lg mx-auto mb-8 text-xs text-muted leading-relaxed flex items-center justify-center gap-2">
+            <Clock className="w-4 h-4 text-luma-blue shrink-0" />
+            <span>
+              If your access isn't ready yet, don't worry. Your trial will be extended so you get the full 7 days to enjoy Luma once access is available.
+            </span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-muted-dark font-mono">

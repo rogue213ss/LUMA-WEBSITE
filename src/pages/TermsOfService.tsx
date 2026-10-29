@@ -62,10 +62,10 @@ export const TermsOfService: React.FC<TermsProps> = ({ onBack }) => {
 
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-white tracking-tight">
-            3. Proposed Pricing &amp; One-Time Payment Model
+            3. Free Trial Evaluation &amp; One-Time Payment Model
           </h2>
           <p>
-            Luma is sold as a single, one-time payment. There are no recurring fees or ongoing subscription obligations. Both tiers include standard bug fixes and compatibility updates for Windows 10/11.
+            Prospective users may evaluate Project Luma under our <strong className="text-white">7-Day Free Trial</strong>. If your access is queued or delayed during rollout waves, your trial will be extended so that you receive seven full days of usable access starting only once access is delivered and activated. Following the trial, permanent ownership requires a single, one-time payment ($5.99 for Lifetime or $9.99 for Exclusive). There are no recurring subscriptions or hidden upkeep fees.
           </p>
         </section>
 

@@ -83,7 +83,7 @@ export const Footer: FC<FooterProps> = ({ onNavigate }) => {
                   onClick={() => handleNav('#pricing')}
                   className="text-muted hover:text-white transition-colors"
                 >
-                  Pricing ($5.99 / $9.99)
+                  Pricing &amp; 7-Day Trial
                 </button>
               </li>
               <li>

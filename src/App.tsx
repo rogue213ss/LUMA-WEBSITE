@@ -17,7 +17,7 @@ import { SupportPage } from './pages/SupportPage';
 export function App() {
   const [currentRoute, setCurrentRoute] = useState<string>('home');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedTier, setSelectedTier] = useState<'lifetime' | 'exclusive'>('lifetime');
+  const [selectedTier, setSelectedTier] = useState<'trial' | 'lifetime' | 'exclusive'>('trial');
 
   // Handle URL hash changes
   useEffect(() => {
@@ -47,10 +47,8 @@ export function App() {
     }
   };
 
-  const handleOpenPricingModal = (tierId?: 'lifetime' | 'exclusive') => {
-    if (tierId) {
-      setSelectedTier(tierId);
-    }
+  const handleOpenPricingModal = (tierId?: 'trial' | 'lifetime' | 'exclusive') => {
+    setSelectedTier(tierId || 'trial');
     setIsModalOpen(true);
   };
 

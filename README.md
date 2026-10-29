@@ -12,7 +12,7 @@ Official marketing and product website for **Project Luma**, a Windows music com
 - **Tagline**: *"Don't just listen. Feel it."*
 - **Platform**: Windows 10 & 11 (64-bit)
 - **Social**: `@luma.player`
-- **Pricing Model**: One-time payment (Lifetime $5.99 / Exclusive $9.99). Zero subscriptions.
+- **Pricing Model**: Primary offer: 7-Day Free Trial (with access delay protection). Permanent ownership: One-time payment (Lifetime $5.99 / Exclusive $9.99). Zero subscriptions.
 - **Audio Privacy**: 100% on-device WASAPI system audio loopback; zero telemetry; no audio recording.
 
 ---

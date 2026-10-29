@@ -1,9 +1,9 @@
 import React from 'react';
-import { Sparkles, ArrowRight, Shield, Activity, Monitor } from 'lucide-react';
+import { Sparkles, ArrowRight, Shield, Activity, Monitor, Clock } from 'lucide-react';
 import { InteractivePlayerMockup } from './InteractivePlayerMockup';
 
 interface HeroProps {
-  onOpenPricingModal: (tierId?: 'lifetime' | 'exclusive') => void;
+  onOpenPricingModal: (tierId?: 'trial' | 'lifetime' | 'exclusive') => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenPricingModal }) => {
@@ -17,10 +17,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPricingModal }) => {
         {/* Top Badges & Announcement */}
         <div className="flex flex-wrap items-center justify-center gap-2.5 mb-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-card border border-surface-border text-xs text-muted-light shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-luma-blue animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="font-medium text-white">Project Luma for Windows</span>
             <span className="text-muted-dark">•</span>
-            <span className="text-luma-blue font-mono font-medium">One-Time Purchase</span>
+            <span className="text-emerald-400 font-mono font-medium">7-Day Free Trial Available</span>
           </div>
 
           <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-muted/60 border border-surface-border text-xs text-muted-dark">
@@ -42,26 +42,33 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPricingModal }) => {
             Luma transforms whatever your Windows PC is playing into music-reactive screen-edge lighting, cinematic synchronized lyrics, and living visual worlds.
           </p>
 
-          {/* Call to Actions */}
+          {/* Call to Actions - Primary 7-Day Free Trial */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-3">
             <button
-              onClick={() => onOpenPricingModal('lifetime')}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold text-base shadow-glow-md hover:shadow-glow-lg transition-all duration-200 flex items-center justify-center gap-2.5 group"
+              onClick={() => onOpenPricingModal('trial')}
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold text-base shadow-glow-md hover:shadow-glow-lg transition-all duration-200 flex items-center justify-center gap-2.5 group"
             >
-              <span>Get Lifetime Access</span>
-              <span className="px-2 py-0.5 rounded-md bg-black/25 text-xs font-mono font-medium">
-                $5.99
-              </span>
+              <Sparkles className="w-4 h-4 text-sky-200" />
+              <span>Try Luma Free for 7 Days</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </button>
 
             <a
-              href="#showcase"
-              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-surface-card hover:bg-surface border border-surface-border hover:border-luma-blue/40 text-muted-light hover:text-white font-medium text-base transition-colors flex items-center justify-center gap-2"
+              href="#pricing"
+              className="w-full sm:w-auto px-6 py-4 rounded-xl bg-surface-card hover:bg-surface border border-surface-border hover:border-luma-blue/40 text-muted-light hover:text-white font-medium text-base transition-colors flex items-center justify-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-luma-blue" />
-              <span>Explore 8 Visual Worlds</span>
+              <span>View Lifetime Plans ($5.99)</span>
             </a>
+          </div>
+
+          {/* Trial Delay Policy Reassurance Pill */}
+          <div className="pt-2 max-w-xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface-card/80 border border-surface-border text-xs text-muted-light text-center leading-normal">
+              <Clock className="w-3.5 h-3.5 text-luma-blue shrink-0" />
+              <span>
+                <strong className="text-white">Trial Reassurance:</strong> If your access isn't ready yet, don't worry. Your trial will be extended so you get the full 7 days to enjoy Luma once access is available.
+              </span>
+            </div>
           </div>
 
           {/* Trust Highlights */}

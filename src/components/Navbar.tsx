@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Sparkles, Monitor } from 'lucide-react';
 
 interface NavbarProps {
-  onOpenPricingModal: (tierId?: 'lifetime' | 'exclusive') => void;
+  onOpenPricingModal: (tierId?: 'trial' | 'lifetime' | 'exclusive') => void;
   currentRoute: string;
   onNavigate: (route: string) => void;
 }
@@ -95,9 +95,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPricingModal, currentRoute
             </button>
             <button
               onClick={() => handleNavClick('#pricing')}
-              className="text-muted-light hover:text-white transition-colors"
+              className="text-muted-light hover:text-white transition-colors flex items-center gap-1.5"
             >
-              Pricing
+              <span>Pricing</span>
+              <span className="text-[10px] font-mono uppercase bg-luma-blue/15 text-luma-blue px-1.5 py-0.2 rounded border border-luma-blue/30">
+                Trial Free
+              </span>
             </button>
             <button
               onClick={() => handleNavClick('#faq')}
@@ -120,22 +123,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPricingModal, currentRoute
               <span>Windows Desktop</span>
             </div>
             <button
-              onClick={() => onOpenPricingModal()}
-              className="relative group overflow-hidden px-4 py-2 rounded-lg bg-surface-card hover:bg-surface border border-luma-blue/40 hover:border-luma-blue text-sm font-semibold text-white transition-all duration-200 shadow-glow-sm hover:shadow-glow-md flex items-center gap-2"
+              onClick={() => onOpenPricingModal('trial')}
+              className="relative group overflow-hidden px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500/20 via-sky-500/10 to-blue-600/20 hover:from-sky-500/30 hover:to-blue-600/30 border border-luma-blue/50 hover:border-luma-blue text-sm font-semibold text-white transition-all duration-200 shadow-glow-sm hover:shadow-glow-md flex items-center gap-2"
             >
               <Sparkles className="w-4 h-4 text-luma-blue animate-pulse" />
-              <span>Get Luma</span>
-              <span className="text-xs text-luma-blue font-mono ml-0.5">$5.99</span>
+              <span>Try 7 Days Free</span>
+              <span className="text-xs text-emerald-400 font-mono ml-0.5">$0</span>
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
             <button
-              onClick={() => onOpenPricingModal()}
-              className="px-3 py-1.5 rounded-lg bg-luma-blue/10 border border-luma-blue/30 text-xs font-semibold text-luma-blue"
+              onClick={() => onOpenPricingModal('trial')}
+              className="px-3 py-1.5 rounded-lg bg-luma-blue/15 border border-luma-blue/40 text-xs font-semibold text-luma-blue"
             >
-              Get Luma
+              Try 7 Days Free
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -172,9 +175,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPricingModal, currentRoute
             </button>
             <button
               onClick={() => handleNavClick('#pricing')}
-              className="text-left py-2 px-3 rounded-lg text-muted-light hover:text-white hover:bg-surface-card"
+              className="text-left py-2 px-3 rounded-lg text-muted-light hover:text-white hover:bg-surface-card flex items-center justify-between"
             >
-              Pricing
+              <span>Pricing</span>
+              <span className="text-xs font-mono uppercase text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                7 Days Free
+              </span>
             </button>
             <button
               onClick={() => handleNavClick('#faq')}
@@ -186,7 +192,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPricingModal, currentRoute
               onClick={() => handleNavClick('support')}
               className="text-left py-2 px-3 rounded-lg text-muted-light hover:text-white hover:bg-surface-card"
             >
-              Support & Documentation
+              Support &amp; Documentation
             </button>
           </div>
 
@@ -194,22 +200,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPricingModal, currentRoute
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenPricingModal('lifetime');
+                onOpenPricingModal('trial');
               }}
-              className="w-full py-2.5 rounded-lg bg-surface-card border border-luma-blue/50 text-center font-medium text-white flex items-center justify-center gap-2"
+              className="w-full py-2.5 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 text-center font-medium text-white flex items-center justify-center gap-2 shadow-glow-sm"
             >
-              <span>Luma Lifetime</span>
-              <span className="text-luma-blue font-mono">$5.99</span>
+              <Sparkles className="w-4 h-4" />
+              <span>Try Luma Free for 7 Days</span>
             </button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenPricingModal('exclusive');
+                onOpenPricingModal('lifetime');
               }}
-              className="w-full py-2.5 rounded-lg bg-surface border border-luma-violet/50 text-center font-medium text-white flex items-center justify-center gap-2"
+              className="w-full py-2.5 rounded-lg bg-surface-card border border-surface-border text-center font-medium text-white flex items-center justify-center gap-2"
             >
-              <span>Luma Exclusive</span>
-              <span className="text-luma-violet font-mono">$9.99</span>
+              <span>Luma Lifetime</span>
+              <span className="text-luma-blue font-mono">$5.99</span>
             </button>
           </div>
         </div>
