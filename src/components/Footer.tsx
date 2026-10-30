@@ -53,6 +53,16 @@ export const Footer: FC<FooterProps> = ({ onNavigate }) => {
                 @luma.player
               </a>
             </div>
+
+            <div className="pt-2 text-xs">
+              <span className="text-muted-dark block text-[11px] font-mono uppercase mb-0.5">Support Contact:</span>
+              <a 
+                href="mailto:lumaplayer.support@gmail.com" 
+                className="text-luma-blue font-mono hover:underline text-xs"
+              >
+                lumaplayer.support@gmail.com
+              </a>
+            </div>
           </div>
 
           {/* Navigation Links */}
@@ -83,6 +93,14 @@ export const Footer: FC<FooterProps> = ({ onNavigate }) => {
                   className="text-muted hover:text-white transition-colors"
                 >
                   How Luma Works
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNav('#system-requirements')}
+                  className="text-muted hover:text-white transition-colors"
+                >
+                  System Requirements
                 </button>
               </li>
               <li>
@@ -156,6 +174,10 @@ export const Footer: FC<FooterProps> = ({ onNavigate }) => {
                 <span className="text-white">Windows 10/11 x64</span>
               </div>
               <div className="flex items-center justify-between text-muted-light">
+                <span>RAM Target:</span>
+                <span className="text-white">6 GB Min. / 8 GB Rec.</span>
+              </div>
+              <div className="flex items-center justify-between text-muted-light">
                 <span>Audio Engine:</span>
                 <span className="text-emerald-400">WASAPI Loopback</span>
               </div>
@@ -164,8 +186,8 @@ export const Footer: FC<FooterProps> = ({ onNavigate }) => {
                 <span className="text-emerald-400">Zero / Disabled</span>
               </div>
               <div className="flex items-center justify-between text-muted-light">
-                <span>License Model:</span>
-                <span className="text-sky-400">One-Time (No Sub)</span>
+                <span>Pricing:</span>
+                <span className="text-sky-400">$4.99 Lifetime (No Sub)</span>
               </div>
             </div>
           </div>

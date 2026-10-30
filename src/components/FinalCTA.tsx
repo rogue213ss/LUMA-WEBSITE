@@ -46,7 +46,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenPricingModal }) => {
               onClick={() => onOpenPricingModal('lifetime')}
               className="w-full sm:w-auto px-6 py-4 rounded-xl bg-surface hover:bg-surface-hover border border-surface-border hover:border-luma-blue/40 text-white font-medium text-base transition-colors flex items-center justify-center gap-2"
             >
-              <span>Lifetime Access ($5.99)</span>
+              <span>Lifetime Access ($4.99)</span>
             </button>
           </div>
 

@@ -147,8 +147,8 @@ export const PRICING_TIERS: PricingTier[] = [
   {
     id: 'lifetime',
     name: 'Luma Lifetime',
-    price: '$5.99',
-    period: 'one-time purchase',
+    price: '$4.99',
+    period: 'one-time purchase (planned launch price)',
     headline: 'Everything you need to transform your Windows desktop music experience.',
     features: [
       'Core Luma Windows companion experience',
@@ -163,13 +163,13 @@ export const PRICING_TIERS: PricingTier[] = [
       'No subscription or recurring charges ever'
     ],
     highlighted: false,
-    ctaText: 'Choose Lifetime ($5.99)'
+    ctaText: 'Choose Lifetime ($4.99)'
   },
   {
     id: 'exclusive',
     name: 'Luma Exclusive',
     price: '$9.99',
-    period: 'one-time purchase',
+    period: 'one-time purchase (planned launch price)',
     headline: 'For power users and enthusiasts who want early builds and priority input.',
     badge: 'Enthusiast Tier',
     features: [
@@ -217,17 +217,22 @@ export const FAQS: FAQItem[] = [
   {
     category: 'Licensing & Pricing',
     question: 'Does Luma require a monthly subscription?',
-    answer: 'No. Project Luma does not use recurring monthly subscriptions. You can start with our 7-Day Free Trial, and if you choose to keep Luma, permanent ownership is a simple one-time payment ($5.99 for Lifetime or $9.99 for Exclusive).'
+    answer: 'No. Project Luma does not use recurring monthly subscriptions. You can start with our 7-Day Free Trial, and if you choose to keep Luma, permanent ownership is a simple one-time payment ($4.99 for Lifetime or $9.99 for Exclusive).'
   },
   {
     category: 'Licensing & Pricing',
     question: 'What is the difference between Lifetime and Exclusive?',
-    answer: 'Luma Lifetime ($5.99) gives you the complete core Luma companion with all 8 visual worlds, reactive edge lighting, synchronized lyrics, and standard updates. Luma Exclusive ($9.99) includes everything in Lifetime plus early access to preview builds and priority consideration when community feature requests are reviewed. (Note: Exclusive does not guarantee custom development or guaranteed implementation of individual requests).'
+    answer: 'Luma Lifetime ($4.99) gives you the complete core Luma companion with all 8 visual worlds, reactive edge lighting, synchronized lyrics, and standard updates. Luma Exclusive ($9.99) includes everything in Lifetime plus early access to preview builds and priority consideration when community feature requests are reviewed. (Note: Exclusive does not guarantee custom development or guaranteed implementation of individual requests).'
   },
   {
     category: 'Licensing & Pricing',
     question: 'How will purchases and license activation work?',
-    answer: 'Purchase and activation details will be available at launch. When checkout goes live via Lemon Squeezy, each purchase will deliver an instant license key valid for activation on up to 3 personal Windows devices, along with seamless device management.'
+    answer: 'When public checkout goes live via Lemon Squeezy, each purchase will deliver an instant license key valid for activation on up to 3 personal Windows devices, along with seamless device management. Currently during active beta testing, evaluation access and invitation codes (LUMA-TEST) are distributed via the 7-Day Free Trial request form.'
+  },
+  {
+    category: 'Licensing & Pricing',
+    question: 'What is Project Luma\'s refund policy?',
+    answer: 'We offer a 48-hour refund request window from the time of purchase for licenses bought via Lemon Squeezy. If you experience persistent technical incompatibilities or unresolved activation issues on compatible Windows 10/11 hardware, email lumaplayer.support@gmail.com with your Lemon Squeezy order receipt within 48 hours. Approved refunds are processed via Lemon Squeezy back to your original payment method.'
   },
   {
     category: 'Privacy & Audio',
@@ -237,6 +242,6 @@ export const FAQS: FAQItem[] = [
   {
     category: 'General',
     question: 'Where can customers get support?',
-    answer: 'Customer support will be available via our official support hub and email at launch. We also provide built-in documentation, troubleshooting guides for Windows audio settings, and a dedicated community channel.'
+    answer: 'Customer support is available directly via email at lumaplayer.support@gmail.com and through our Support & Documentation Hub. We also provide built-in documentation and troubleshooting guides for Windows audio settings.'
   }
 ];

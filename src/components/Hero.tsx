@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPricingModal }) => {
               href="#pricing"
               className="w-full sm:w-auto px-6 py-4 rounded-xl bg-surface-card hover:bg-surface border border-surface-border hover:border-luma-blue/40 text-muted-light hover:text-white font-medium text-base transition-colors flex items-center justify-center gap-2"
             >
-              <span>View Lifetime Plans ($5.99)</span>
+              <span>View Lifetime Plans ($4.99)</span>
             </a>
           </div>
 

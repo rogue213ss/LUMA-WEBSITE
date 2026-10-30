@@ -112,7 +112,7 @@ export const InteractivePlayerMockup: React.FC = () => {
             <div className="flex items-center gap-2">
               <img src="/icon.png" alt="" className="w-4 h-4 object-contain" />
               <span className="font-medium text-white/90">Project Luma</span>
-              <span className="text-[11px] text-muted-dark font-mono">v0.2.1 • Windows GSMTC</span>
+              <span className="text-[11px] text-muted-dark font-mono">v0.2.1 • Interactive Desktop Simulation</span>
             </div>
             
             {/* Quick Status & Mode Tag */}

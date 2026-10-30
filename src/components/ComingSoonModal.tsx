@@ -213,7 +213,7 @@ export const ComingSoonModal: React.FC<ComingSoonModalProps> = ({
                     : 'text-muted-dark hover:text-muted'
                 }`}
               >
-                Lifetime ($5.99)
+                Lifetime ($4.99)
               </button>
               <button
                 type="button"

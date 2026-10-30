@@ -1,20 +1,29 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Monitor, HelpCircle, Send, CheckCircle2, Key, Cpu, Volume2, ShieldCheck, Mail } from 'lucide-react';
+import { ArrowLeft, Monitor, HelpCircle, Send, CheckCircle2, Key, Cpu, Volume2, ShieldCheck, Mail, ExternalLink } from 'lucide-react';
 
 interface SupportProps {
   onBack: () => void;
 }
 
 export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [ticketSubject, setTicketSubject] = useState('');
   const [ticketEmail, setTicketEmail] = useState('');
   const [ticketMessage, setTicketMessage] = useState('');
+  const [emailClientOpened, setEmailClientOpened] = useState(false);
 
   const handleTicketSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!ticketEmail || !ticketMessage) return;
-    setFormSubmitted(true);
+    if (!ticketMessage.trim()) return;
+
+    const subject = encodeURIComponent(
+      ticketSubject.trim() ? `[Project Luma Support] ${ticketSubject.trim()}` : '[Project Luma Support] Assistance Request'
+    );
+    const bodyContent = `Hello Project Luma Team,\n\nSender Email: ${ticketEmail.trim() || 'Not specified'}\n\nMessage Details:\n${ticketMessage.trim()}\n\n---\nSystem: Windows 10/11 x64`;
+    const body = encodeURIComponent(bodyContent);
+
+    const mailtoUrl = `mailto:lumaplayer.support@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoUrl;
+    setEmailClientOpened(true);
   };
 
   return (
@@ -34,7 +43,7 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
           Early Access &amp; Testers
         </span>
         <p className="text-muted-light">
-          Welcome to the Project Luma tester hub. If you received a <code className="text-white bg-black/40 px-1 py-0.5 rounded font-mono">LUMA-TEST</code> invitation code, refer to the diagnostic guide below or reach our team directly at <a href="mailto:support@lumaplayer.com" className="text-luma-blue underline">support@lumaplayer.com</a>.
+          Welcome to the Project Luma tester hub. If you received a <code className="text-white bg-black/40 px-1 py-0.5 rounded font-mono">LUMA-TEST</code> invitation code, refer to the diagnostic guide below or reach our team directly at <a href="mailto:lumaplayer.support@gmail.com" className="text-luma-blue underline font-mono">lumaplayer.support@gmail.com</a>.
         </p>
       </div>
 
@@ -68,7 +77,7 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
             <div className="p-3.5 rounded-xl bg-surface border border-surface-border space-y-1">
               <span className="text-muted-dark block">AUDIO SUBSYSTEM</span>
               <span className="text-emerald-400 font-medium">WASAPI Loopback</span>
-              <span className="text-[10px] text-muted-dark block">Default Output Device</span>
+              <span className="text-[10px] text-muted-dark block">Default Output (Shared)</span>
             </div>
             <div className="p-3.5 rounded-xl bg-surface border border-surface-border space-y-1">
               <span className="text-muted-dark block">UI RUNTIME</span>
@@ -77,8 +86,8 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
             </div>
             <div className="p-3.5 rounded-xl bg-surface border border-surface-border space-y-1">
               <span className="text-muted-dark block">MEMORY &amp; CPU</span>
-              <span className="text-white font-medium">4 GB RAM (8 GB Rec.)</span>
-              <span className="text-[10px] text-muted-dark block">Low Power Tier Included</span>
+              <span className="text-white font-medium">6 GB RAM (8 GB Rec.)</span>
+              <span className="text-[10px] text-muted-dark block">Adaptive Low Tier Enabled</span>
             </div>
           </div>
         </section>
@@ -100,9 +109,9 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
               <p className="text-muted leading-relaxed">
                 1. <strong>Code Format:</strong> Codes follow the format <code className="text-white font-mono bg-surface px-1 py-0.5 rounded">LUMA-TEST-XXXX-XXXX</code>. Ensure no extra spaces are copied.
                 <br />
-                2. <strong>Device Binding:</strong> Each code locks to your specific Windows PC on first activation. Re-installing on the same PC will automatically re-authorize.
+                2. <strong>Device Binding:</strong> Each code securely registers to your Windows PC upon initial activation. Up to 3 personal devices are supported per license.
                 <br />
-                3. <strong>Offline Grace:</strong> After online activation, Luma operates offline for up to 14 days before needing a background refresh.
+                3. <strong>Offline Grace:</strong> After initial online activation, Luma operates offline for up to 14 days before needing a background refresh.
               </p>
             </div>
 
@@ -112,11 +121,11 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
                 <span>Lighting doesn't react to music</span>
               </h3>
               <p className="text-muted leading-relaxed">
-                1. Verify that your sound is playing through Windows Default Output Device.
+                1. Verify that your sound is playing through the Windows Default Output Device in Shared mode.
                 <br />
                 2. Check <strong className="text-white">Settings &gt; Ambient Lighting</strong> and ensure <strong className="text-white">"Follow Music"</strong> is selected (not "Still Glow").
                 <br />
-                3. Check if Windows "Reduced Motion" is enabled in system settings, which turns reactive motion off.
+                3. Check if Windows "Reduced Motion" is enabled in Windows Settings, which suspends active motion effects.
               </p>
             </div>
 
@@ -130,7 +139,7 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
                 <br />
                 2. In web browsers (Chrome/Edge), ensure hardware media keys are enabled in browser flags.
                 <br />
-                3. Some browser incognito tabs do not publish GSMTC sessions to Windows.
+                3. Note that private or incognito browser windows often do not broadcast GSMTC sessions to Windows.
               </p>
             </div>
 
@@ -140,7 +149,7 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
                 <span>Adaptive Low-Performance Tier</span>
               </h3>
               <p className="text-muted leading-relaxed">
-                If running on battery or lightweight laptops (e.g. 8 GB RAM / integrated graphics), Luma automatically adapts to <strong className="text-white">Low Performance Tier</strong> (24 FPS canvas, ~480p lightweight loops, 55% pixel fill reduction).
+                Systems with 6 GB RAM, $\le$ 4 CPU threads, or integrated graphics automatically engage Luma's <strong className="text-white">Adaptive Low-Performance Tier</strong> (480p lightweight video loops, lyrics &amp; immersion modes, and simplified canvas rendering) to protect desktop responsiveness.
               </p>
             </div>
           </div>
@@ -177,70 +186,118 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
             </h2>
           </div>
           <p className="text-sm text-muted mb-6">
-            Have a tester question or compatibility issue? You can reach us directly at <a href="mailto:support@lumaplayer.com" className="text-white underline font-mono">support@lumaplayer.com</a> or send a note below.
+            Have a question, feedback, or compatibility report? You can reach our engineering team directly at{' '}
+            <a href="mailto:lumaplayer.support@gmail.com" className="text-luma-blue underline font-mono font-medium">
+              lumaplayer.support@gmail.com
+            </a>
+            . We typically respond within 24 hours.
           </p>
 
-          {formSubmitted ? (
-            <div className="p-6 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-2">
-              <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto" />
-              <h3 className="text-lg font-bold text-white">Support Request Logged</h3>
-              <p className="text-xs text-muted max-w-md mx-auto">
-                Thank you for your feedback. Our team will review your report and reply to <strong className="text-white">{ticketEmail}</strong> promptly.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleTicketSubmit} className="space-y-4 max-w-xl">
-              <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-muted-dark mb-1">
-                  Your Email Address
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={ticketEmail}
-                  onChange={(e) => setTicketEmail(e.target.value)}
-                  placeholder="name@example.com"
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm outline-none focus:border-luma-blue"
-                />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* Direct Email Card */}
+            <div className="lg:col-span-5 p-5 rounded-2xl bg-surface border border-surface-border space-y-4">
+              <div className="space-y-1">
+                <span className="text-xs font-mono uppercase tracking-wider text-muted-dark block">
+                  Direct Email Channel
+                </span>
+                <p className="text-xs text-muted-light leading-relaxed">
+                  For bug reports, logs, or licensing inquiries, emailing us directly is the fastest method.
+                </p>
               </div>
 
-              <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-muted-dark mb-1">
-                  Subject / Topic
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={ticketSubject}
-                  onChange={(e) => setTicketSubject(e.target.value)}
-                  placeholder="e.g., Windows Audio device loopback or tester code issue"
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm outline-none focus:border-luma-blue"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-muted-dark mb-1">
-                  Message Details
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  value={ticketMessage}
-                  onChange={(e) => setTicketMessage(e.target.value)}
-                  placeholder="Describe your Windows version, audio setup, and the issue or question..."
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm outline-none focus:border-luma-blue"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="px-6 py-3 rounded-xl bg-surface hover:bg-surface-hover border border-luma-blue/50 text-white text-sm font-semibold flex items-center gap-2 transition-all shadow-glow-sm"
+              <a
+                href="mailto:lumaplayer.support@gmail.com"
+                className="w-full py-3 px-4 rounded-xl bg-luma-blue/15 hover:bg-luma-blue/25 border border-luma-blue/40 text-white text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-glow-sm"
               >
-                <Send className="w-4 h-4 text-luma-blue" />
-                <span>Send Message to Support</span>
-              </button>
-            </form>
-          )}
+                <Mail className="w-4 h-4 text-luma-blue" />
+                <span>Open Mail to Support</span>
+                <ExternalLink className="w-3.5 h-3.5 text-muted-light" />
+              </a>
+
+              <div className="pt-2 border-t border-surface-border/60 text-[11px] text-muted-dark font-mono space-y-1">
+                <div>Support Email: lumaplayer.support@gmail.com</div>
+                <div>Hours: Monday – Saturday</div>
+                <div>Average Response: &lt; 24 Hours</div>
+              </div>
+            </div>
+
+            {/* Compose in Email Client Form */}
+            <div className="lg:col-span-7">
+              {emailClientOpened ? (
+                <div className="p-6 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-3">
+                  <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto" />
+                  <h3 className="text-lg font-bold text-white">Email Client Triggered</h3>
+                  <p className="text-xs text-muted max-w-md mx-auto leading-relaxed">
+                    Your pre-formatted support message has been prepared for <strong className="text-white font-mono">lumaplayer.support@gmail.com</strong>.
+                  </p>
+                  <p className="text-[11px] text-muted-dark">
+                    If your email application did not launch automatically, send your message directly to <strong className="text-luma-blue font-mono">lumaplayer.support@gmail.com</strong>.
+                  </p>
+                  <button
+                    onClick={() => setEmailClientOpened(false)}
+                    className="px-4 py-2 rounded-lg bg-surface border border-surface-border text-xs text-muted-light hover:text-white"
+                  >
+                    Edit Message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleTicketSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-muted-dark mb-1">
+                      Your Email Address (Optional)
+                    </label>
+                    <input
+                      type="email"
+                      value={ticketEmail}
+                      onChange={(e) => setTicketEmail(e.target.value)}
+                      placeholder="name@example.com"
+                      className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm outline-none focus:border-luma-blue"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-muted-dark mb-1">
+                      Subject / Topic
+                    </label>
+                    <input
+                      type="text"
+                      value={ticketSubject}
+                      onChange={(e) => setTicketSubject(e.target.value)}
+                      placeholder="e.g., Audio loopback or tester code inquiry"
+                      className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm outline-none focus:border-luma-blue"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-muted-dark mb-1">
+                      Message Details
+                    </label>
+                    <textarea
+                      required
+                      rows={4}
+                      value={ticketMessage}
+                      onChange={(e) => setTicketMessage(e.target.value)}
+                      placeholder="Describe your Windows version, audio setup, and the issue or question..."
+                      className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm outline-none focus:border-luma-blue"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-3 rounded-xl bg-surface hover:bg-surface-hover border border-luma-blue/50 text-white text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-glow-sm"
+                  >
+                    <Send className="w-4 h-4 text-luma-blue" />
+                    <span>Open in Email App &amp; Send to Support</span>
+                  </button>
+                  <span className="block text-[11px] text-muted-dark text-center">
+                    Uses your system's default email client to send directly to lumaplayer.support@gmail.com
+                  </span>
+                </form>
+              )}
+            </div>
+
+          </div>
         </section>
 
       </div>

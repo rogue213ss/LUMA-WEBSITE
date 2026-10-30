@@ -94,7 +94,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectTier }) => {
                         ? 'bg-luma-blue/15 border-luma-blue/40 text-luma-blue font-semibold'
                         : 'bg-surface border-surface-border text-muted-light'
                     }`}>
-                      {isTrial ? '7-Day Free' : 'One-time'}
+                      {isTrial ? '7-Day Free' : 'Planned Launch Price'}
                     </span>
                   </div>
 
@@ -178,7 +178,10 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectTier }) => {
               The 7-Day Free Trial gives you full access to all Luma features without payment. If your build access is staged, your trial timer will not start until your installation is validated and ready to run.
             </p>
             <p className="text-muted-dark pt-1">
-              Permanent Lifetime ($5.99) and Exclusive ($9.99) licenses will be available for direct checkout upon public release via Lemon Squeezy. No payment processing is active on this site during this preview phase.
+              Permanent Lifetime ($4.99) and Exclusive ($9.99) licenses will be available for direct checkout upon public release via Lemon Squeezy. Project Luma is currently in active Windows beta testing; checkout is not yet live. You can request 7-day evaluation access or join the waitlist above.
+            </p>
+            <p className="text-muted-dark pt-1 border-t border-surface-border/50 text-[11px]">
+              <strong className="text-white">Product Delivery:</strong> Digital software for Windows 10/11. Upon public release, purchased license keys and installer download links will be delivered immediately on-screen at checkout and sent to your email.
             </p>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { VisualShowcase } from './components/VisualShowcase';
 import { HowItWorks } from './components/HowItWorks';
+import { SystemRequirements } from './components/SystemRequirements';
 import { Pricing } from './components/Pricing';
 import { FAQ } from './components/FAQ';
 import { FinalCTA } from './components/FinalCTA';
@@ -69,6 +70,7 @@ export function App() {
             <Features />
             <VisualShowcase />
             <HowItWorks />
+            <SystemRequirements />
             <Pricing onSelectTier={handleOpenPricingModal} />
             <FAQ />
             <FinalCTA onOpenPricingModal={handleOpenPricingModal} />

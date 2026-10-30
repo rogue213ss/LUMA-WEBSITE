@@ -215,7 +215,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPricingModal, currentRoute
               className="w-full py-2.5 rounded-lg bg-surface-card border border-surface-border text-center font-medium text-white flex items-center justify-center gap-2"
             >
               <span>Luma Lifetime</span>
-              <span className="text-luma-blue font-mono">$5.99</span>
+              <span className="text-luma-blue font-mono">$4.99</span>
             </button>
           </div>
         </div>
