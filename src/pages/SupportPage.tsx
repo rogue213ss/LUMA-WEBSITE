@@ -37,13 +37,13 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
         <span>Return to Project Luma</span>
       </button>
 
-      {/* Tester Program Notice */}
+      {/* Support Notice */}
       <div className="p-4 rounded-xl bg-surface-card border border-luma-blue/30 text-xs mb-8 flex items-start gap-3">
         <span className="font-mono font-bold uppercase shrink-0 px-2 py-0.5 rounded bg-luma-blue/15 text-luma-blue">
-          Early Access &amp; Testers
+          Support
         </span>
         <p className="text-muted-light">
-          Welcome to the Project Luma tester hub. If you received a <code className="text-white bg-black/40 px-1 py-0.5 rounded font-mono">LUMA-TEST</code> invitation code, refer to the diagnostic guide below or reach our team directly at <a href="mailto:lumaplayer.support@gmail.com" className="text-luma-blue underline font-mono">lumaplayer.support@gmail.com</a>.
+          Welcome to the Project Luma support hub. Find activation help and troubleshooting below, or reach our team directly at <a href="mailto:lumaplayer.support@gmail.com" className="text-luma-blue underline font-mono">lumaplayer.support@gmail.com</a>.
         </p>
       </div>
 
@@ -100,16 +100,16 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-            {/* Tester Activation Code Guide */}
+            {/* License Key Activation Guide */}
             <div className="p-5 rounded-xl bg-surface-card border border-luma-blue/30 space-y-2">
               <h3 className="font-semibold text-white flex items-center gap-2">
                 <Key className="w-4 h-4 text-luma-blue" />
-                <span>Tester Code Activation Help</span>
+                <span>License Key Activation Help</span>
               </h3>
               <p className="text-muted leading-relaxed">
-                1. <strong>Code Format:</strong> Codes follow the format <code className="text-white font-mono bg-surface px-1 py-0.5 rounded">LUMA-TEST-XXXX-XXXX</code>. Ensure no extra spaces are copied.
+                1. <strong>Code Format:</strong> License keys follow the format <code className="text-white font-mono bg-surface px-1 py-0.5 rounded">LUMA-XXXX-XXXX-XXXX-XXXX</code>. Ensure no extra spaces are copied.
                 <br />
-                2. <strong>Device Binding:</strong> Each code securely registers to your Windows PC upon initial activation. Up to 3 personal devices are supported per license.
+                2. <strong>Device Binding:</strong> Each license key securely registers to your Windows PC upon initial activation. Up to 3 personal devices are supported per license.
                 <br />
                 3. <strong>Offline Grace:</strong> After initial online activation, Luma operates offline for up to 14 days before needing a background refresh.
               </p>
@@ -264,7 +264,7 @@ export const SupportPage: React.FC<SupportProps> = ({ onBack }) => {
                       type="text"
                       value={ticketSubject}
                       onChange={(e) => setTicketSubject(e.target.value)}
-                      placeholder="e.g., Audio loopback or tester code inquiry"
+                      placeholder="e.g., Audio loopback or license key inquiry"
                       className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm outline-none focus:border-luma-blue"
                     />
                   </div>

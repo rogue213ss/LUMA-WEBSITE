@@ -57,31 +57,20 @@ export const TermsOfService: React.FC<TermsProps> = ({ onBack }) => {
 
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-white tracking-tight">
-            3. Pricing Model &amp; Evaluation Offers
+            3. Pricing Model
           </h2>
           <p>
             Project Luma operates strictly on a <strong className="text-white">single one-time payment</strong> model with zero recurring monthly subscription charges.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div className="p-4 rounded-xl bg-surface-card border border-surface-border space-y-2">
-              <span className="text-xs font-mono uppercase tracking-wider text-luma-blue font-semibold block">
-                7-Day Free Trial (Active Beta)
-              </span>
-              <p className="text-xs text-muted-light leading-relaxed">
-                Prospective users can evaluate Luma with full feature access at zero cost. If access is queued during staged rollout waves, your 7-day period begins strictly when your build is delivered and activated.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-xl bg-surface-card border border-surface-border space-y-2">
+          <div className="p-4 rounded-xl bg-surface-card border border-surface-border space-y-2">
               <span className="text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold block">
-                Planned Launch Pricing
+                Pricing
               </span>
               <p className="text-xs text-muted-light leading-relaxed">
-                When public purchasing goes live via our Merchant of Record, <strong className="text-white">Polar</strong>, permanent ownership will be offered at <strong className="text-white">$5.99</strong> (Lifetime) and <strong className="text-white">$9.99</strong> (Exclusive). Direct checkout is available online via Polar.
+                Permanent ownership is offered at <strong className="text-white">$5.99</strong> (Lifetime) and <strong className="text-white">$9.99</strong> (Exclusive). Checkout is handled online by our Merchant of Record, <strong className="text-white">Polar</strong>. No free trial is offered.
               </p>
             </div>
-          </div>
-        </section>
+          </section>
 
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">

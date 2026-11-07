@@ -123,7 +123,7 @@ export const VISUAL_MODES: VisualModeInfo[] = [
   }
 ];
 
-export const POLAR_LIFETIME_CHECKOUT_URL = "https://polar.sh/checkout/polar_c_vp1QB3uagmYw2to2DSPx3S0O92zkjIiFzUndj1ctpuj";
+export const POLAR_LIFETIME_CHECKOUT_URL = "https://buy.polar.sh/polar_cl_6nCmmUMaiUIobDJQ38by5NBBbMoLCcZYigKbi3hncy3";
 export const POLAR_EXCLUSIVE_CHECKOUT_URL = "https://buy.polar.sh/polar_cl_Vwo9lsHRYyoZM4c0OS0me0gmbvVXg4Zkqddn418MuTy";
 
 export const PRICING_TIERS: PricingTier[] = [

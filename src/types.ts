@@ -30,7 +30,7 @@ export interface VisualModeInfo {
 }
 
 export interface PricingTier {
-  id: 'lifetime' | 'exclusive' | 'trial';
+  id: 'lifetime' | 'exclusive';
   name: string;
   price: string;
   period: string;

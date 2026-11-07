@@ -101,7 +101,7 @@ export const PrivacyPolicy: React.FC<PolicyProps> = ({ onBack }) => {
             <span>6. License Activation &amp; Device Identifiers</span>
           </h2>
           <p>
-            To activate and verify your license or beta evaluation access, Luma communicates with our secure licensing backend:
+            To activate and verify your license, Luma communicates with our secure licensing backend:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-muted-light">
             <li><strong className="text-white">Anonymous Device Identifier:</strong> Upon initial setup, Luma generates a random 16-byte pseudo-random hexadecimal string (<code className="text-xs font-mono text-muted-light bg-surface px-1 py-0.5 rounded">luma_inst_...</code>) using the operating system's cryptographic random number generator. This identifier is stored in your Windows Credential Manager and local application directory.</li>

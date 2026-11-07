@@ -203,7 +203,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPricingModal, currentRoute
               className="w-full py-2.5 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 text-center font-medium text-white flex items-center justify-center gap-2 shadow-glow-sm"
             >
               <Sparkles className="w-4 h-4" />
-              <span>Try Luma Free for 7 Days</span>
+              <span>View Pricing</span>
             </button>
             <button
               onClick={() => {
