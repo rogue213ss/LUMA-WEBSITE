@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sparkles, Monitor } from 'lucide-react';
+import { Menu, X, Sparkles, Monitor, Download } from 'lucide-react';
+import { LUMA_LATEST_INSTALLER_URL } from '../data/mockData';
 
 interface NavbarProps {
   onOpenPricingModal: (tierId?: 'lifetime' | 'exclusive') => void;
@@ -112,6 +113,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPricingModal, currentRoute
             >
               Support
             </button>
+            <a
+              href={LUMA_LATEST_INSTALLER_URL}
+              className="text-muted-light hover:text-white transition-colors flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-surface/60"
+              title="Download Windows Installer (Luma-Setup.exe)"
+            >
+              <Download className="w-3.5 h-3.5 text-luma-blue" />
+              <span>Download</span>
+            </a>
           </nav>
 
           {/* CTA & Platform Indicator */}
@@ -192,6 +201,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPricingModal, currentRoute
             >
               Support &amp; Documentation
             </button>
+            <a
+              href={LUMA_LATEST_INSTALLER_URL}
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-left py-2 px-3 rounded-lg text-luma-blue hover:text-white hover:bg-surface-card flex items-center gap-2 font-medium"
+            >
+              <Download className="w-4 h-4 text-luma-blue" />
+              <span>Download Windows Installer (.exe)</span>
+            </a>
           </div>
 
           <div className="pt-3 border-t border-surface-border flex flex-col gap-2">

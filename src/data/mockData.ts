@@ -126,6 +126,9 @@ export const VISUAL_MODES: VisualModeInfo[] = [
 export const POLAR_LIFETIME_CHECKOUT_URL = "https://buy.polar.sh/polar_cl_6nCmmUMaiUIobDJQ38by5NBBbMoLCcZYigKbi3hncy3";
 export const POLAR_EXCLUSIVE_CHECKOUT_URL = "https://buy.polar.sh/polar_cl_Vwo9lsHRYyoZM4c0OS0me0gmbvVXg4Zkqddn418MuTy";
 
+export const LUMA_LATEST_INSTALLER_URL = "https://github.com/rogue213ss/Luma-Releases/releases/latest/download/Luma-Setup.exe";
+export const LUMA_RELEASES_PAGE_URL = "https://github.com/rogue213ss/Luma-Releases/releases";
+
 export const PRICING_TIERS: PricingTier[] = [
   {
     id: 'lifetime',
@@ -189,7 +192,7 @@ export const FAQS: FAQItem[] = [
   {
     category: 'Licensing & Pricing',
     question: 'How do I receive my license key after purchasing?',
-    answer: 'Immediately upon completing your purchase through Polar, your unique license key (formatted as LUMA-XXXX-XXXX-XXXX-XXXX) and an installer download link are displayed on the confirmation screen and sent directly to your email address by Polar. You can copy and paste the key directly into Luma upon launch to activate.'
+    answer: 'Immediately upon completing your purchase through Polar, your unique license key (formatted as LUMA-XXXX-XXXX-XXXX-XXXX) and an installer download link are displayed on the confirmation screen and sent directly to your email address by Polar. You can also re-download the latest installer at any time from our official releases repository (https://github.com/rogue213ss/Luma-Releases/releases/latest/download/Luma-Setup.exe) and activate with your key.'
   },
   {
     category: 'Licensing & Pricing',

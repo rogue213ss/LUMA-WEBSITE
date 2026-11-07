@@ -1,6 +1,6 @@
 import React from 'react';
-import { PRICING_TIERS } from '../data/mockData';
-import { Check, Sparkles, Shield, Monitor, Key, ExternalLink, Info } from 'lucide-react';
+import { PRICING_TIERS, LUMA_LATEST_INSTALLER_URL } from '../data/mockData';
+import { Check, Sparkles, Shield, Monitor, Key, ExternalLink, Info, Download } from 'lucide-react';
 import { PricingTier } from '../types';
 
 interface PricingProps {
@@ -154,8 +154,8 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectTier }) => {
                 <Key className="w-3.5 h-3.5 text-luma-blue" />
                 <span>Instant License Delivery</span>
               </div>
-              <p className="text-muted-dark text-[11px]">
-                Purchased license keys (<code className="text-white font-mono">LUMA-XXXX-...</code>) are displayed immediately on the Polar confirmation screen and emailed to you.
+              <p className="text-muted-dark text-[11px] leading-relaxed">
+                Purchased license keys (<code className="text-white font-mono">LUMA-XXXX-...</code>) and installer links are displayed immediately on the Polar confirmation screen and emailed to you. You can also re-download <a href={LUMA_LATEST_INSTALLER_URL} className="text-luma-blue hover:text-white underline inline-flex items-center gap-0.5 font-medium"><Download className="w-2.5 h-2.5 inline" />Luma-Setup.exe</a> directly.
               </p>
             </div>
 

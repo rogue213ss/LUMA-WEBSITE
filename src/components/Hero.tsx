@@ -1,7 +1,7 @@
 import React from 'react';
-import { Sparkles, ArrowRight, Shield, Activity, Monitor, ExternalLink, Check } from 'lucide-react';
+import { Sparkles, ArrowRight, Shield, Activity, Monitor, ExternalLink, Check, Download } from 'lucide-react';
 import { InteractivePlayerMockup } from './InteractivePlayerMockup';
-import { POLAR_LIFETIME_CHECKOUT_URL } from '../data/mockData';
+import { POLAR_LIFETIME_CHECKOUT_URL, LUMA_LATEST_INSTALLER_URL } from '../data/mockData';
 
 interface HeroProps {
   onOpenPricingModal: (tierId?: 'lifetime' | 'exclusive') => void;
@@ -65,13 +65,23 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPricingModal: _onOpenPricingMo
             </a>
           </div>
 
-          {/* Instant Delivery Pill */}
-          <div className="pt-2 max-w-xl mx-auto">
+          {/* Instant Delivery Pill & Manual Download Link */}
+          <div className="pt-2 max-w-xl mx-auto space-y-2">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface-card/80 border border-surface-border text-xs text-muted-light text-center leading-normal">
               <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
               <span>
                 <strong className="text-white">Instant Polar Delivery:</strong> License key delivered on-screen &amp; emailed immediately. Up to 3 personal Windows devices.
               </span>
+            </div>
+            <div>
+              <a
+                href={LUMA_LATEST_INSTALLER_URL}
+                className="inline-flex items-center gap-1.5 text-xs text-muted-dark hover:text-white transition-colors"
+                title="Download Project Luma Windows Installer"
+              >
+                <Download className="w-3.5 h-3.5 text-luma-blue" />
+                <span>Already purchased? <span className="text-luma-blue underline font-medium">Download Windows Installer (Luma-Setup.exe)</span></span>
+              </a>
             </div>
           </div>
 

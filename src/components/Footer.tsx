@@ -1,4 +1,6 @@
 import type { FC } from 'react';
+import { Download, ExternalLink } from 'lucide-react';
+import { LUMA_LATEST_INSTALLER_URL, LUMA_RELEASES_PAGE_URL } from '../data/mockData';
 
 interface FooterProps {
   onNavigate: (route: string) => void;
@@ -118,6 +120,26 @@ export const Footer: FC<FooterProps> = ({ onNavigate }) => {
                 >
                   FAQ
                 </button>
+              </li>
+              <li>
+                <a
+                  href={LUMA_LATEST_INSTALLER_URL}
+                  className="text-luma-blue hover:text-white transition-colors flex items-center gap-1 font-medium"
+                >
+                  <Download className="w-3 h-3" />
+                  <span>Download Installer (.exe)</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={LUMA_RELEASES_PAGE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted hover:text-white transition-colors flex items-center gap-1"
+                >
+                  <span>Releases &amp; Changelog</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-muted-dark" />
+                </a>
               </li>
             </ul>
           </div>
