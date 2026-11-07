@@ -1,12 +1,13 @@
 import React from 'react';
-import { Sparkles, ArrowRight, Shield, Activity, Monitor, Clock } from 'lucide-react';
+import { Sparkles, ArrowRight, Shield, Activity, Monitor, ExternalLink, Check } from 'lucide-react';
 import { InteractivePlayerMockup } from './InteractivePlayerMockup';
+import { POLAR_LIFETIME_CHECKOUT_URL } from '../data/mockData';
 
 interface HeroProps {
-  onOpenPricingModal: (tierId?: 'trial' | 'lifetime' | 'exclusive') => void;
+  onOpenPricingModal: (tierId?: 'lifetime' | 'exclusive') => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenPricingModal }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenPricingModal: _onOpenPricingModal }) => {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       {/* Background Subtle Atmospheric Light */}
@@ -20,7 +21,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPricingModal }) => {
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="font-medium text-white">Project Luma for Windows</span>
             <span className="text-muted-dark">•</span>
-            <span className="text-emerald-400 font-mono font-medium">7-Day Free Trial Available</span>
+            <span className="text-sky-400 font-mono font-medium">$5.99 Lifetime License</span>
           </div>
 
           <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-muted/60 border border-surface-border text-xs text-muted-dark">
@@ -42,31 +43,34 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPricingModal }) => {
             Luma transforms whatever your Windows PC is playing into music-reactive screen-edge lighting, cinematic synchronized lyrics, and living visual worlds.
           </p>
 
-          {/* Call to Actions - Primary 7-Day Free Trial */}
+          {/* Call to Actions - Primary Lifetime Purchase */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-3">
-            <button
-              onClick={() => onOpenPricingModal('trial')}
+            <a
+              href={POLAR_LIFETIME_CHECKOUT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold text-base shadow-glow-md hover:shadow-glow-lg transition-all duration-200 flex items-center justify-center gap-2.5 group"
             >
               <Sparkles className="w-4 h-4 text-sky-200" />
-              <span>Try Luma Free for 7 Days</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </button>
+              <span>Get Lifetime License ($5.99)</span>
+              <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
 
             <a
               href="#pricing"
               className="w-full sm:w-auto px-6 py-4 rounded-xl bg-surface-card hover:bg-surface border border-surface-border hover:border-luma-blue/40 text-muted-light hover:text-white font-medium text-base transition-colors flex items-center justify-center gap-2"
             >
-              <span>View Lifetime Plans ($4.99)</span>
+              <span>Compare Plans ($5.99 / $9.99)</span>
+              <ArrowRight className="w-4 h-4" />
             </a>
           </div>
 
-          {/* Trial Delay Policy Reassurance Pill */}
+          {/* Instant Delivery Pill */}
           <div className="pt-2 max-w-xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface-card/80 border border-surface-border text-xs text-muted-light text-center leading-normal">
-              <Clock className="w-3.5 h-3.5 text-luma-blue shrink-0" />
+              <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
               <span>
-                <strong className="text-white">Trial Reassurance:</strong> If your access isn't ready yet, don't worry. Your trial will be extended so you get the full 7 days to enjoy Luma once access is available.
+                <strong className="text-white">Instant Polar Delivery:</strong> License key delivered on-screen &amp; emailed immediately. Up to 3 personal Windows devices.
               </span>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, CheckCircle2, AlertCircle, Key, Mail, Clock } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, AlertCircle, Key, Mail, Clock, ShieldCheck } from 'lucide-react';
 
 interface RefundProps {
   onBack: () => void;
@@ -23,7 +23,7 @@ export const RefundPolicy: React.FC<RefundProps> = ({ onBack }) => {
             Refund &amp; Cancellation Policy
           </h1>
           <p className="text-xs font-mono text-muted-dark">
-            Last Updated: October 2026 • Version 1.0
+            Last Updated: November 2026 • Version 2.0 (Polar Integration)
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export const RefundPolicy: React.FC<RefundProps> = ({ onBack }) => {
             Project Luma is a native digital desktop software application for 64-bit Windows 10 and Windows 11. Licenses are sold on a perpetual one-time purchase basis (with no recurring subscription fees).
           </p>
           <p>
-            When public purchasing launches, order processing, billing, and transactions are managed by our Merchant of Record, <strong className="text-white">Lemon Squeezy</strong>. We want every customer to have a dependable, high-quality audio visualizer experience on their PC.
+            Order processing, billing, regional sales tax compliance, and payment security are managed securely by our payment provider and Merchant of Record, <strong className="text-white">Polar</strong> (<a href="https://polar.sh" target="_blank" rel="noopener noreferrer" className="text-luma-blue underline">polar.sh</a>). We want every customer to have a dependable, high-quality audio visualizer experience on their PC.
           </p>
         </section>
 
@@ -86,24 +86,25 @@ export const RefundPolicy: React.FC<RefundProps> = ({ onBack }) => {
             If you purchase a license and experience an activation issue (for example, network connectivity errors, credential storage restrictions, or system errors):
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-muted-light">
-            <li>Our support team will assist you in diagnosing the activation failure, verifying your device ID record, or resetting the activation slot if necessary.</li>
-            <li>If technical resolution is not achievable on your Windows machine within the refund window, a refund will be submitted for processing via Lemon Squeezy.</li>
+            <li>Our support team will assist you in diagnosing the activation failure, verifying your device ID record, or resetting the activation slot in Polar if necessary.</li>
+            <li>If technical resolution is not achievable on your Windows machine within the refund window, a refund will be submitted for processing via Polar.</li>
           </ul>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-bold text-white tracking-tight">
-            4. License Deactivation Upon Refund
+          <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-emerald-400" />
+            <span>4. License Deactivation Upon Refund</span>
           </h2>
           <p>
-            When a refund is approved and issued through Lemon Squeezy, your associated license key will be automatically revoked in our activation registry. Any active installations bound to that license key will return to an inactive status.
+            When a refund is approved and issued through Polar, your associated license key will be automatically revoked in our Polar activation registry. Any active installations bound to that license key will return to an inactive status upon their next verification.
           </p>
         </section>
 
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
             <Mail className="w-5 h-5 text-luma-blue" />
-            <span>5. How to Request a Refund Through Lemon Squeezy</span>
+            <span>5. How to Request a Refund Through Polar</span>
           </h2>
           <p>
             To submit a refund request within the 48-hour purchase window, please follow these steps:
@@ -114,13 +115,13 @@ export const RefundPolicy: React.FC<RefundProps> = ({ onBack }) => {
               <a href="mailto:lumaplayer.support@gmail.com" className="text-luma-blue font-mono underline">
                 lumaplayer.support@gmail.com
               </a>{' '}
-              with your Lemon Squeezy order number or receipt, the email address used during checkout, and a brief description of the technical issue.
+              with your Polar order confirmation, receipt number, or the email address used during Polar checkout, along with a brief description of the technical issue.
             </li>
             <li>
-              <strong>Lemon Squeezy Order Receipt:</strong> Alternatively, you can open your original Lemon Squeezy email receipt, click <em>"View Order"</em> to access your receipt page, and use Lemon Squeezy's customer inquiry tools.
+              <strong>Polar Order Receipt:</strong> Alternatively, you can open your original Polar email receipt to verify your transaction ID before contacting us.
             </li>
             <li>
-              <strong>Review &amp; Settlement:</strong> Refund requests are reviewed by our engineering team to verify technical eligibility. Refunds are not instantaneous or automatic; once submitted to Lemon Squeezy, settlement to your original payment method typically takes 3 to 5 business days depending on your financial institution.
+              <strong>Review &amp; Settlement:</strong> Refund requests are reviewed by our team to verify technical eligibility. Once initiated in Polar, settlement to your original payment method typically takes 3 to 5 business days depending on your financial institution.
             </li>
           </ol>
           <div className="pt-3">

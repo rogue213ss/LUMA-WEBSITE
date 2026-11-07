@@ -30,7 +30,7 @@ export interface VisualModeInfo {
 }
 
 export interface PricingTier {
-  id: 'trial' | 'lifetime' | 'exclusive';
+  id: 'lifetime' | 'exclusive' | 'trial';
   name: string;
   price: string;
   period: string;
@@ -40,6 +40,7 @@ export interface PricingTier {
   highlighted?: boolean;
   ctaText: string;
   delayNotice?: string;
+  checkoutUrl?: string | null;
 }
 
 export interface FAQItem {

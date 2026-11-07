@@ -77,7 +77,7 @@ export const TermsOfService: React.FC<TermsProps> = ({ onBack }) => {
                 Planned Launch Pricing
               </span>
               <p className="text-xs text-muted-light leading-relaxed">
-                When public purchasing goes live via our Merchant of Record, <strong className="text-white">Lemon Squeezy</strong>, permanent ownership will be offered at <strong className="text-white">$4.99</strong> (Lifetime) and <strong className="text-white">$9.99</strong> (Exclusive). Direct checkout is currently upcoming as pre-release testing completes.
+                When public purchasing goes live via our Merchant of Record, <strong className="text-white">Polar</strong>, permanent ownership will be offered at <strong className="text-white">$5.99</strong> (Lifetime) and <strong className="text-white">$9.99</strong> (Exclusive). Direct checkout is available online via Polar.
               </p>
             </div>
           </div>
@@ -89,11 +89,11 @@ export const TermsOfService: React.FC<TermsProps> = ({ onBack }) => {
             <span>4. Refund Policy &amp; 48-Hour Request Window</span>
           </h2>
           <p>
-            Because Project Luma is downloadable digital desktop software for Windows, licenses purchased through our Merchant of Record, <strong className="text-white">Lemon Squeezy</strong>, are subject to our <a href="#/refunds" className="text-luma-blue underline font-medium">Refund Policy</a>:
+            Because Project Luma is downloadable digital desktop software for Windows, licenses purchased through our Merchant of Record, <strong className="text-white">Polar</strong>, are subject to our <a href="#/refunds" className="text-luma-blue underline font-medium">Refund Policy</a>:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-muted-light">
             <li><strong className="text-white">48-Hour Window:</strong> Customers may submit a refund request within <strong className="text-white">forty-eight (48) hours from the time of purchase</strong> if they encounter persistent technical failure, audio loopback capture failure, or unresolved license activation issues on verified Windows 10/11 systems.</li>
-            <li><strong className="text-white">Evaluation Procedure:</strong> Refund requests are reviewed by our support team and processed through Lemon Squeezy if verified. Refunds are not instantaneous or automatic, and bank processing times apply.</li>
+            <li><strong className="text-white">Evaluation Procedure:</strong> Refund requests are reviewed by our support team and processed through Polar if verified. Refunds are not instantaneous or automatic, and bank processing times apply.</li>
             <li><strong className="text-white">License Revocation:</strong> Upon refund approval, the issued license code is revoked in our activation registry and associated PC installations return to an unactivated state.</li>
           </ul>
         </section>

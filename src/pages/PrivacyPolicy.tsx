@@ -116,10 +116,10 @@ export const PrivacyPolicy: React.FC<PolicyProps> = ({ onBack }) => {
             7. Payment Processing &amp; Merchant of Record
           </h2>
           <p>
-            When public purchasing launches, orders and payments will be conducted securely by our Merchant of Record, <strong className="text-white">Lemon Squeezy</strong>. Lemon Squeezy handles order processing, sales tax collection, and payment security on their PCI-DSS Level 1 compliant infrastructure.
+            When public purchasing launches, orders and payments will be conducted securely by our Merchant of Record, <strong className="text-white">Polar</strong>. Polar handles order processing, sales tax collection, and payment security on their PCI-DSS Level 1 compliant infrastructure.
           </p>
           <p>
-            Project Luma never collects, processes, or stores your credit card numbers, billing addresses, or payment credentials. When Lemon Squeezy completes a transaction, we receive only the necessary confirmation to issue your license key and manage your device activation allowance.
+            Project Luma never collects, processes, or stores your credit card numbers, billing addresses, or payment credentials. When Polar completes a transaction, we receive only the necessary confirmation to issue your license key and manage your device activation allowance.
           </p>
         </section>
 

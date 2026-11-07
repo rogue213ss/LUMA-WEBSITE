@@ -108,7 +108,7 @@ export const Footer: FC<FooterProps> = ({ onNavigate }) => {
                   onClick={() => handleNav('#pricing')}
                   className="text-muted hover:text-white transition-colors"
                 >
-                  Pricing &amp; 7-Day Trial
+                  Pricing &amp; Plans
                 </button>
               </li>
               <li>
@@ -187,7 +187,7 @@ export const Footer: FC<FooterProps> = ({ onNavigate }) => {
               </div>
               <div className="flex items-center justify-between text-muted-light">
                 <span>Pricing:</span>
-                <span className="text-sky-400">$4.99 Lifetime (No Sub)</span>
+                <span className="text-sky-400">$5.99 Lifetime (No Sub)</span>
               </div>
             </div>
           </div>

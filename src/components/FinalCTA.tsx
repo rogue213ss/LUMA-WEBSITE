@@ -1,11 +1,12 @@
 import React from 'react';
-import { Sparkles, ArrowRight, ShieldCheck, Monitor, Clock } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, Monitor, ExternalLink, Key } from 'lucide-react';
+import { POLAR_LIFETIME_CHECKOUT_URL } from '../data/mockData';
 
 interface FinalCTAProps {
-  onOpenPricingModal: (tierId?: 'trial' | 'lifetime' | 'exclusive') => void;
+  onOpenPricingModal: (tierId?: 'lifetime' | 'exclusive') => void;
 }
 
-export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenPricingModal }) => {
+export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenPricingModal: _onOpenPricingModal }) => {
   return (
     <section className="py-24 bg-gradient-to-b from-[#080B10] to-[#040609] relative overflow-hidden">
       {/* Background glow effects */}
@@ -21,7 +22,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenPricingModal }) => {
             <span className="w-2 h-2 rounded-full bg-emerald-400" />
             <span>Windows Desktop Companion</span>
             <span className="text-muted-dark">•</span>
-            <span className="text-emerald-400 font-mono font-medium">7-Day Free Trial Available</span>
+            <span className="text-emerald-400 font-mono font-medium">Polar Checkout Live</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
@@ -29,32 +30,35 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenPricingModal }) => {
           </h2>
 
           <p className="text-muted text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-            Music-reactive lighting, cinematic lyrics, and 8 immersive visual worlds for Windows. Try everything free for 7 days.
+            Music-reactive lighting, cinematic lyrics, and 8 immersive visual worlds for Windows. One-time purchase, lifetime access.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <button
-              onClick={() => onOpenPricingModal('trial')}
+            <a
+              href={POLAR_LIFETIME_CHECKOUT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold text-base shadow-glow-md hover:shadow-glow-lg transition-all duration-200 flex items-center justify-center gap-2.5 group"
             >
               <Sparkles className="w-4 h-4 text-sky-200" />
-              <span>Try Luma Free for 7 Days</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+              <span>Get Lifetime License ($5.99)</span>
+              <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
 
-            <button
-              onClick={() => onOpenPricingModal('lifetime')}
+            <a
+              href="#pricing"
               className="w-full sm:w-auto px-6 py-4 rounded-xl bg-surface hover:bg-surface-hover border border-surface-border hover:border-luma-blue/40 text-white font-medium text-base transition-colors flex items-center justify-center gap-2"
             >
-              <span>Lifetime Access ($4.99)</span>
-            </button>
+              <span>View Plans &amp; Tiers</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
 
           {/* Reassurance text */}
           <div className="max-w-lg mx-auto mb-8 text-xs text-muted leading-relaxed flex items-center justify-center gap-2">
-            <Clock className="w-4 h-4 text-luma-blue shrink-0" />
+            <Key className="w-4 h-4 text-luma-blue shrink-0" />
             <span>
-              If your access isn't ready yet, don't worry. Your trial will be extended so you get the full 7 days to enjoy Luma once access is available.
+              Instant on-screen license key and email confirmation. Up to 3 personal devices with 14-day offline grace.
             </span>
           </div>
 

@@ -123,60 +123,46 @@ export const VISUAL_MODES: VisualModeInfo[] = [
   }
 ];
 
+export const POLAR_LIFETIME_CHECKOUT_URL = "https://polar.sh/checkout/polar_c_vp1QB3uagmYw2to2DSPx3S0O92zkjIiFzUndj1ctpuj";
+export const POLAR_EXCLUSIVE_CHECKOUT_URL = "https://buy.polar.sh/polar_cl_Vwo9lsHRYyoZM4c0OS0me0gmbvVXg4Zkqddn418MuTy";
+
 export const PRICING_TIERS: PricingTier[] = [
-  {
-    id: 'trial',
-    name: '7-Day Free Trial',
-    price: 'Free',
-    period: '7 days full access',
-    headline: 'Experience full music-reactive lighting, cinematic lyrics, and all 8 visual worlds on Windows with zero risk.',
-    badge: 'Primary Offer • 7-Day Access',
-    features: [
-      'Full access to all 8 Visual Worlds',
-      'Music-reactive 4-edge ambient screen glow',
-      'Cinematic synchronized lyrics & local .lrc support',
-      'Windows GSMTC & WASAPI audio loopback',
-      'No credit card required to request trial access',
-      'Full 7-day period begins only when your build is active',
-      'Trial extended if access is delayed—you always get the full 7 days'
-    ],
-    highlighted: true,
-    ctaText: 'Try Luma Free for 7 Days',
-    delayNotice: "If your access isn't ready yet, don't worry. Your trial will be extended so you get the full 7 days to enjoy Luma once access is available."
-  },
   {
     id: 'lifetime',
     name: 'Luma Lifetime',
-    price: '$4.99',
-    period: 'one-time purchase (planned launch price)',
+    price: '$5.99',
+    period: 'one-time payment',
     headline: 'Everything you need to transform your Windows desktop music experience.',
+    badge: 'Popular • Lifetime Access',
     features: [
       'Core Luma Windows companion experience',
-      'Music-reactive screen-edge lighting (4 edges)',
-      'Cinematic synchronized lyrics & local file (.lrc) support',
-      'All 8 visual worlds (Cinematic, Immersion, Flow, etc.)',
+      'Music-reactive screen-edge lighting across all four edges',
+      'Cinematic synchronized lyrics & local .lrc support',
+      'All 8 visual worlds (Cinematic, Immersion, Flow, Spectrum, etc.)',
       'Album-artwork palette extraction & custom splits',
-      'Windows GSMTC support (Spotify, YouTube, browsers, players)',
+      'Windows GSMTC support (Spotify, YouTube, browsers, media players)',
       'Standard bug fixes and compatibility updates',
       'Install on up to 3 personal Windows devices',
-      '100% private: local WASAPI audio loopback, zero telemetry',
+      'Local WASAPI audio loopback, 100% private, zero telemetry',
       'No subscription or recurring charges ever'
     ],
-    highlighted: false,
-    ctaText: 'Choose Lifetime ($4.99)'
+    highlighted: true,
+    ctaText: 'Choose Lifetime — $5.99',
+    checkoutUrl: POLAR_LIFETIME_CHECKOUT_URL,
   },
   {
     id: 'exclusive',
     name: 'Luma Exclusive',
     price: '$9.99',
-    period: 'one-time purchase (planned launch price)',
-    headline: 'For power users and enthusiasts who want early builds and priority input.',
+    period: 'one-time payment',
+    headline: 'For power users and enthusiasts who want early builds and priority input into Luma development.',
     badge: 'Enthusiast Tier',
     features: [
       'Everything included in Luma Lifetime',
-      'Early access to new feature builds and experimental modes',
+      'Early access to new feature builds and preview channels',
+      'Access to experimental modes and builds',
       'Priority consideration for feature requests and feedback',
-      'Supporter badge in app about screen',
+      'Supporter badge in the application settings',
       'Direct input into upcoming visual presets and themes',
       'Standard bug fixes and compatibility updates',
       'Install on up to 3 personal Windows devices',
@@ -184,55 +170,56 @@ export const PRICING_TIERS: PricingTier[] = [
       'One-time payment, no subscription'
     ],
     highlighted: false,
-    ctaText: 'Choose Exclusive ($9.99)'
+    ctaText: 'Get Luma Exclusive — $9.99',
+    checkoutUrl: POLAR_EXCLUSIVE_CHECKOUT_URL,
   }
 ];
 
 export const FAQS: FAQItem[] = [
   {
     category: 'Licensing & Pricing',
-    question: 'How does the 7-Day Free Trial work?',
-    answer: 'The 7-day free trial gives you complete, unrestricted access to Project Luma on your Windows PC—including all 8 visual worlds, music-reactive 4-edge lighting, and synchronized lyrics. You can test Luma thoroughly with your existing music apps (Spotify, YouTube, local files) with zero upfront cost and no credit card required.'
+    question: 'Does Luma require a monthly subscription?',
+    answer: 'No. Project Luma is strictly a one-time purchase with lifetime access. There are no recurring fees, hidden charges, or monthly subscriptions. Both Luma Lifetime ($5.99) and Luma Exclusive ($9.99) give you permanent ownership.'
   },
   {
     category: 'Licensing & Pricing',
-    question: 'Does waiting for trial access eat into my 7 days?',
-    answer: 'Not at all. If your access isn\'t ready yet, don\'t worry. Your trial will be extended so you get the full 7 days to enjoy Luma once access is available. The 7-day evaluation window begins strictly when your build is delivered and activated on your machine—never while you are waiting on the rollout list.'
+    question: 'What is the difference between Luma Lifetime and Luma Exclusive?',
+    answer: 'Luma Lifetime ($5.99) gives you the complete core Luma companion: all 8 visual worlds, reactive edge lighting, synchronized lyrics, album artwork extraction, and standard updates on up to 3 PCs. Luma Exclusive ($9.99) includes everything in Lifetime plus early access to preview builds, experimental modes, a Supporter badge inside the app, and priority consideration when community feedback is reviewed.'
+  },
+  {
+    category: 'Licensing & Pricing',
+    question: 'How do I receive my license key after purchasing?',
+    answer: 'Immediately upon completing your purchase through Polar, your unique license key (formatted as LUMA-XXXX-XXXX-XXXX-XXXX) and an installer download link are displayed on the confirmation screen and sent directly to your email address by Polar. You can copy and paste the key directly into Luma upon launch to activate.'
+  },
+  {
+    category: 'Licensing & Pricing',
+    question: 'How many devices can I activate on?',
+    answer: 'Each license key allows simultaneous activation on up to 3 personal Windows 10/11 devices. If you upgrade your computer or want to move a license to another machine, you can deactivate the device at any time from within Luma’s Settings to instantly free up your activation slot.'
+  },
+  {
+    category: 'Licensing & Pricing',
+    question: 'Can Luma be used offline without internet?',
+    answer: 'Yes! After initial online activation, Luma includes a 14-day offline grace period. You can listen offline or take your laptop on trips without interruption. Whenever you reconnect to the internet, Luma quietly verifies with Polar in the background to refresh your 14-day offline window.'
+  },
+  {
+    category: 'Licensing & Pricing',
+    question: 'What is Project Luma\'s refund policy?',
+    answer: 'We offer a 48-hour refund request window from the time of purchase for licenses bought via Polar. If you experience persistent technical incompatibilities or unresolved activation issues on compatible Windows 10/11 hardware, email lumaplayer.support@gmail.com with your Polar order receipt within 48 hours. Approved refunds are processed directly back to your original payment method.'
   },
   {
     category: 'General',
     question: 'What is Luma?',
-    answer: 'Project Luma is a Windows desktop music companion that transforms music playing on your PC into music-reactive lighting, cinematic synchronized lyrics, album artwork extraction, and immersive visual worlds. Your existing player (like Spotify or YouTube) continues handling audio playback, while Luma visualizes, controls, and illuminates your screen.'
+    answer: 'Project Luma is a Windows desktop music companion that transforms whatever your PC is playing into music-reactive lighting, cinematic synchronized lyrics, album artwork extraction, and immersive visual worlds. Your existing player (like Spotify, YouTube, or local media players) continues handling audio, while Luma visualizes, controls, and illuminates your screen.'
   },
   {
     category: 'Compatibility',
     question: 'Which operating systems does Luma support?',
-    answer: 'Luma is built specifically for Windows 10 and Windows 11 (64-bit). It integrates deeply with Windows Media Sessions (GSMTC) and the modern WebView2 runtime (pre-installed on Windows 10 and 11).'
+    answer: 'Luma is built natively for Windows 10 and Windows 11 (64-bit). It integrates deeply with Windows Media Sessions (GSMTC) and the modern WebView2 runtime.'
   },
   {
     category: 'Compatibility',
     question: 'Does Luma work with music outside Spotify?',
     answer: 'Yes! Luma’s reactive edge lighting listens to the Windows system audio loopback (via WASAPI) and its playback controls connect to Windows Media Sessions. It works with Spotify desktop, YouTube in web browsers, local media players, and any Windows app that broadcasts audio.'
-  },
-  {
-    category: 'Licensing & Pricing',
-    question: 'Does Luma require a monthly subscription?',
-    answer: 'No. Project Luma does not use recurring monthly subscriptions. You can start with our 7-Day Free Trial, and if you choose to keep Luma, permanent ownership is a simple one-time payment ($4.99 for Lifetime or $9.99 for Exclusive).'
-  },
-  {
-    category: 'Licensing & Pricing',
-    question: 'What is the difference between Lifetime and Exclusive?',
-    answer: 'Luma Lifetime ($4.99) gives you the complete core Luma companion with all 8 visual worlds, reactive edge lighting, synchronized lyrics, and standard updates. Luma Exclusive ($9.99) includes everything in Lifetime plus early access to preview builds and priority consideration when community feature requests are reviewed. (Note: Exclusive does not guarantee custom development or guaranteed implementation of individual requests).'
-  },
-  {
-    category: 'Licensing & Pricing',
-    question: 'How will purchases and license activation work?',
-    answer: 'When public checkout goes live via Lemon Squeezy, each purchase will deliver an instant license key valid for activation on up to 3 personal Windows devices, along with seamless device management. Currently during active beta testing, evaluation access and invitation codes (LUMA-TEST) are distributed via the 7-Day Free Trial request form.'
-  },
-  {
-    category: 'Licensing & Pricing',
-    question: 'What is Project Luma\'s refund policy?',
-    answer: 'We offer a 48-hour refund request window from the time of purchase for licenses bought via Lemon Squeezy. If you experience persistent technical incompatibilities or unresolved activation issues on compatible Windows 10/11 hardware, email lumaplayer.support@gmail.com with your Lemon Squeezy order receipt within 48 hours. Approved refunds are processed via Lemon Squeezy back to your original payment method.'
   },
   {
     category: 'Privacy & Audio',
@@ -242,6 +229,6 @@ export const FAQS: FAQItem[] = [
   {
     category: 'General',
     question: 'Where can customers get support?',
-    answer: 'Customer support is available directly via email at lumaplayer.support@gmail.com and through our Support & Documentation Hub. We also provide built-in documentation and troubleshooting guides for Windows audio settings.'
+    answer: 'Customer support is available directly via email at lumaplayer.support@gmail.com and through our Support & Documentation Hub.'
   }
 ];

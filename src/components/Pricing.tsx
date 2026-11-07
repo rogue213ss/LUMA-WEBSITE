@@ -1,12 +1,21 @@
 import React from 'react';
 import { PRICING_TIERS } from '../data/mockData';
-import { Check, Sparkles, Info, Clock } from 'lucide-react';
+import { Check, Sparkles, Shield, Monitor, Key, ExternalLink, Info } from 'lucide-react';
+import { PricingTier } from '../types';
 
 interface PricingProps {
-  onSelectTier: (tierId: 'trial' | 'lifetime' | 'exclusive') => void;
+  onSelectTier: (tierId: 'lifetime' | 'exclusive') => void;
 }
 
 export const Pricing: React.FC<PricingProps> = ({ onSelectTier }) => {
+  const handleTierClick = (tier: PricingTier) => {
+    if (tier.checkoutUrl) {
+      window.open(tier.checkoutUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      onSelectTier(tier.id as 'lifetime' | 'exclusive');
+    }
+  };
+
   return (
     <section id="pricing" className="py-24 bg-[#06090E] border-t border-surface-border/50 relative">
       {/* Background Subtle Radial Lighting */}
@@ -15,86 +24,58 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectTier }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-card border border-luma-blue/40 text-xs text-luma-blue font-mono uppercase tracking-wider shadow-glow-sm">
             <Sparkles className="w-3.5 h-3.5 text-luma-blue animate-pulse" />
-            <span>Primary Offer • 7-Day Free Trial</span>
+            <span>Lifetime Ownership • No Subscriptions</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Try Luma Free for 7 Days.
+            Simple, Transparent Pricing. Own It for Life.
           </h2>
           <p className="text-muted text-base sm:text-lg">
-            Experience music-reactive edge lighting, synchronized lyrics, and all 8 visual worlds on your Windows setup with zero upfront cost. Keep it permanently whenever you're ready.
+            One-time purchase. No recurring fees. Use on up to 3 personal Windows devices with 100% private on-device audio analysis.
           </p>
         </div>
 
-        {/* Trial Delay Policy Reassurance Banner */}
-        <div className="max-w-4xl mx-auto mb-14 rounded-2xl bg-surface-card/90 border border-luma-blue/30 p-5 sm:p-6 shadow-glow-sm relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-32 bg-luma-blue/10 rounded-full blur-2xl pointer-events-none" />
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 relative z-10">
-            <div className="w-11 h-11 rounded-xl bg-luma-blue/15 border border-luma-blue/40 flex items-center justify-center shrink-0 text-luma-blue">
-              <Clock className="w-5 h-5" />
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-mono uppercase tracking-wider text-luma-blue font-semibold">
-                  Trial Access Guarantee
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span className="text-xs text-muted-dark font-mono">Full 7 Days Protected</span>
-              </div>
-              <p className="text-sm font-semibold text-white leading-snug">
-                “If your access isn't ready yet, don't worry. Your trial will be extended so you get the full 7 days to enjoy Luma once access is available.”
-              </p>
-              <p className="text-xs text-muted-light leading-relaxed">
-                Waiting for access will never eat into your trial period. Your 7 days of evaluation begin strictly after your build is delivered and activated on your PC.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Pricing Cards Grid - 3 Column Layout highlighting Trial */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
+        {/* Pricing Cards Grid - 2 Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
           
           {PRICING_TIERS.map((tier) => {
-            const isTrial = tier.id === 'trial';
-            const isExclusive = tier.id === 'exclusive';
+            const isLifetime = tier.id === 'lifetime';
             
             return (
               <div
                 key={tier.id}
-                className={`rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 relative ${
-                  isTrial
+                className={`rounded-3xl p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 relative ${
+                  isLifetime
                     ? 'bg-gradient-to-b from-[#0F1829] via-surface-card to-[#0A0F1A] border-2 border-luma-blue shadow-glow-md lg:-translate-y-2'
-                    : isExclusive
-                    ? 'bg-surface-card border border-surface-border hover:border-luma-violet/50 shadow-xl'
-                    : 'bg-surface-card border border-surface-border hover:border-surface-border/80 shadow-xl'
+                    : 'bg-surface-card border border-surface-border hover:border-luma-violet/50 shadow-xl'
                 }`}
               >
                 {/* Badge */}
-                {isTrial ? (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 text-white text-xs font-semibold uppercase tracking-wider shadow-md flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3" />
-                    <span>Primary Highlighted Offer</span>
+                {tier.badge && (
+                  <div className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider shadow-md flex items-center gap-1.5 ${
+                    isLifetime
+                      ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white'
+                      : 'bg-surface-muted border border-luma-violet/40 text-luma-violet'
+                  }`}>
+                    {isLifetime && <Sparkles className="w-3 h-3" />}
+                    <span>{tier.badge}</span>
                   </div>
-                ) : isExclusive ? (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-surface-muted border border-surface-border text-muted-light text-xs font-medium uppercase tracking-wider">
-                    Enthusiast Tier
-                  </div>
-                ) : null}
+                )}
 
                 <div>
                   {/* Tier Title & Price */}
-                  <div className="flex items-center justify-between mb-4 mt-1">
-                    <h3 className="text-xl font-bold text-white tracking-tight">
+                  <div className="flex items-center justify-between mb-4 mt-2">
+                    <h3 className="text-2xl font-bold text-white tracking-tight">
                       {tier.name}
                     </h3>
                     <span className={`text-[11px] font-mono uppercase px-2.5 py-0.5 rounded-md border ${
-                      isTrial
+                      isLifetime
                         ? 'bg-luma-blue/15 border-luma-blue/40 text-luma-blue font-semibold'
-                        : 'bg-surface border-surface-border text-muted-light'
+                        : 'bg-luma-violet/15 border-luma-violet/30 text-luma-violet font-semibold'
                     }`}>
-                      {isTrial ? '7-Day Free' : 'Planned Launch Price'}
+                      {tier.period}
                     </span>
                   </div>
 
@@ -103,31 +84,23 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectTier }) => {
                       {tier.price}
                     </span>
                     <span className="text-xs text-muted-dark font-mono uppercase">
-                      / {tier.period}
+                      USD / lifetime
                     </span>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-muted leading-relaxed mb-6 min-h-[40px]">
+                  <p className="text-sm text-muted leading-relaxed mb-6 min-h-[44px]">
                     {tier.headline}
                   </p>
-
-                  {/* Delay notice callout if present on card */}
-                  {tier.delayNotice && (
-                    <div className="mb-6 p-3 rounded-xl bg-luma-blue/10 border border-luma-blue/20 text-xs text-sky-200 leading-snug">
-                      <span className="font-semibold block text-white mb-0.5">Delay Protection:</span>
-                      {tier.delayNotice}
-                    </div>
-                  )}
 
                   {/* Feature Checklist */}
                   <div className="space-y-3 mb-8">
                     <div className="text-[11px] font-mono uppercase tracking-wider text-muted-dark">
-                      What's Included:
+                      {tier.id === 'exclusive' ? 'Everything in Lifetime, Plus:' : "What's Included:"}
                     </div>
                     {tier.features.map((feat, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm">
                         <div className={`mt-0.5 rounded-full p-0.5 shrink-0 ${
-                          isTrial ? 'text-luma-blue' : isExclusive ? 'text-luma-violet' : 'text-sky-400'
+                          isLifetime ? 'text-luma-blue' : 'text-luma-violet'
                         }`}>
                           <Check className="w-4 h-4" />
                         </div>
@@ -139,26 +112,25 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectTier }) => {
                   </div>
                 </div>
 
-                {/* Call to action & Transparency Notice */}
+                {/* Call to action & Guarantee Notice */}
                 <div className="space-y-3 pt-6 border-t border-surface-border">
                   <button
-                    onClick={() => onSelectTier(tier.id)}
-                    className={`w-full py-3.5 rounded-xl font-semibold text-sm sm:text-base transition-all duration-200 flex items-center justify-center gap-2 group ${
-                      isTrial
-                        ? 'bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white shadow-glow-md'
-                        : isExclusive
-                        ? 'bg-surface hover:bg-surface-hover border border-luma-violet/40 hover:border-luma-violet text-white'
-                        : 'bg-surface hover:bg-surface-hover border border-surface-border hover:border-luma-blue/40 text-white'
+                    onClick={() => handleTierClick(tier)}
+                    className={`w-full py-4 rounded-xl font-semibold text-sm sm:text-base transition-all duration-200 flex items-center justify-center gap-2 group ${
+                      isLifetime
+                        ? 'bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white shadow-glow-md hover:shadow-glow-lg'
+                        : 'bg-surface hover:bg-surface-hover border border-luma-violet/40 hover:border-luma-violet text-white'
                     }`}
                   >
                     <span>{tier.ctaText}</span>
+                    <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </button>
 
                   <div className="text-center">
                     <span className="text-[11px] text-muted-dark">
-                      {isTrial 
-                        ? 'No credit card required • Full 7 days upon activation' 
-                        : 'One-time purchase • No recurring subscription'}
+                      {isLifetime 
+                        ? 'Instant Polar Checkout • 3 Personal PCs • No Subscriptions' 
+                        : 'Instant Polar Checkout • Supporter Badge • Early Builds'}
                     </span>
                   </div>
                 </div>
@@ -169,20 +141,43 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectTier }) => {
 
         </div>
 
-        {/* Honest Disclosure Box */}
-        <div className="mt-12 max-w-3xl mx-auto rounded-2xl bg-surface-card/60 border border-surface-border p-5 text-xs text-muted leading-relaxed flex items-start gap-3">
-          <Info className="w-5 h-5 text-luma-blue shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <p className="text-white font-medium">Trial &amp; Launch Status:</p>
-            <p>
-              The 7-Day Free Trial gives you full access to all Luma features without payment. If your build access is staged, your trial timer will not start until your installation is validated and ready to run.
-            </p>
-            <p className="text-muted-dark pt-1">
-              Permanent Lifetime ($4.99) and Exclusive ($9.99) licenses will be available for direct checkout upon public release via Lemon Squeezy. Project Luma is currently in active Windows beta testing; checkout is not yet live. You can request 7-day evaluation access or join the waitlist above.
-            </p>
-            <p className="text-muted-dark pt-1 border-t border-surface-border/50 text-[11px]">
-              <strong className="text-white">Product Delivery:</strong> Digital software for Windows 10/11. Upon public release, purchased license keys and installer download links will be delivered immediately on-screen at checkout and sent to your email.
-            </p>
+        {/* Honest Disclosure & Trust Box */}
+        <div className="mt-16 max-w-4xl mx-auto rounded-2xl bg-surface-card/60 border border-surface-border p-6 text-xs text-muted leading-relaxed space-y-4">
+          <div className="flex items-center gap-2 text-white font-medium text-sm">
+            <Info className="w-4 h-4 text-luma-blue shrink-0" />
+            <span>Customer Delivery &amp; Payment Transparency</span>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
+            <div className="space-y-1 p-3 rounded-xl bg-surface/50 border border-surface-border/60">
+              <div className="flex items-center gap-1.5 text-white font-medium">
+                <Key className="w-3.5 h-3.5 text-luma-blue" />
+                <span>Instant License Delivery</span>
+              </div>
+              <p className="text-muted-dark text-[11px]">
+                Purchased license keys (<code className="text-white font-mono">LUMA-XXXX-...</code>) are displayed immediately on the Polar confirmation screen and emailed to you.
+              </p>
+            </div>
+
+            <div className="space-y-1 p-3 rounded-xl bg-surface/50 border border-surface-border/60">
+              <div className="flex items-center gap-1.5 text-white font-medium">
+                <Monitor className="w-3.5 h-3.5 text-sky-400" />
+                <span>3 Devices &amp; Offline Grace</span>
+              </div>
+              <p className="text-muted-dark text-[11px]">
+                Activate on up to 3 personal Windows devices simultaneously. Validated licenses continue running offline for up to 14 days without network access.
+              </p>
+            </div>
+
+            <div className="space-y-1 p-3 rounded-xl bg-surface/50 border border-surface-border/60">
+              <div className="flex items-center gap-1.5 text-white font-medium">
+                <Shield className="w-3.5 h-3.5 text-emerald-400" />
+                <span>48-Hour Refund Guarantee</span>
+              </div>
+              <p className="text-muted-dark text-[11px]">
+                If Luma encounters unresolved audio loopback or compatibility issues on your Windows PC, email <a href="mailto:lumaplayer.support@gmail.com" className="text-luma-blue underline">lumaplayer.support@gmail.com</a> within 48 hours for a full refund.
+              </p>
+            </div>
           </div>
         </div>
 
