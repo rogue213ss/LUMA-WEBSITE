@@ -14,31 +14,47 @@ import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfService } from './pages/TermsOfService';
 import { RefundPolicy } from './pages/RefundPolicy';
 import { SupportPage } from './pages/SupportPage';
+import { PurchaseSuccess } from './pages/PurchaseSuccess';
 
 export function App() {
   const [currentRoute, setCurrentRoute] = useState<string>('home');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTier, setSelectedTier] = useState<'lifetime' | 'exclusive'>('exclusive');
 
-  // Handle URL hash changes
+  // Normalize route string from hash or pathname
+  const normalizeRoute = (raw: string): string | null => {
+    const clean = raw.replace(/^#\/?/, '').replace(/^\//, '').split('?')[0].split('#')[0].toLowerCase();
+    if (['success', 'purchase-success', 'order-success', 'checkout-success'].includes(clean)) {
+      return 'success';
+    }
+    if (['privacy', 'terms', 'refunds', 'support'].includes(clean)) {
+      return clean;
+    }
+    return null;
+  };
+
+  // Handle URL hash and pathname changes
   useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash.replace('#/', '').replace('#', '');
-      if (['privacy', 'terms', 'refunds', 'support'].includes(hash)) {
-        setCurrentRoute(hash);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (!hash || hash === 'home') {
-        setCurrentRoute('home');
-      }
+    const handleLocation = () => {
+      const hashRoute = normalizeRoute(window.location.hash);
+      const pathRoute = normalizeRoute(window.location.pathname);
+      const resolved = hashRoute || pathRoute || 'home';
+
+      setCurrentRoute(resolved);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    handleHash();
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
+    handleLocation();
+    window.addEventListener('hashchange', handleLocation);
+    window.addEventListener('popstate', handleLocation);
+    return () => {
+      window.removeEventListener('hashchange', handleLocation);
+      window.removeEventListener('popstate', handleLocation);
+    };
   }, []);
 
   const navigate = (route: string) => {
-    if (['privacy', 'terms', 'refunds', 'support'].includes(route)) {
+    if (['privacy', 'terms', 'refunds', 'support', 'success'].includes(route)) {
       window.location.hash = `#/${route}`;
       setCurrentRoute(route);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -91,6 +107,10 @@ export function App() {
 
         {currentRoute === 'support' && (
           <SupportPage onBack={() => navigate('home')} />
+        )}
+
+        {currentRoute === 'success' && (
+          <PurchaseSuccess onBack={() => navigate('home')} onNavigate={navigate} />
         )}
       </main>
 

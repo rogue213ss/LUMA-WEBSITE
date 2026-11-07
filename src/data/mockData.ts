@@ -123,8 +123,11 @@ export const VISUAL_MODES: VisualModeInfo[] = [
   }
 ];
 
-export const POLAR_LIFETIME_CHECKOUT_URL = "https://buy.polar.sh/polar_cl_6nCmmUMaiUIobDJQ38by5NBBbMoLCcZYigKbi3hncy3";
-export const POLAR_EXCLUSIVE_CHECKOUT_URL = "https://buy.polar.sh/polar_cl_Vwo9lsHRYyoZM4c0OS0me0gmbvVXg4Zkqddn418MuTy";
+export const LUMA_PURCHASE_SUCCESS_PATH = "/#/success";
+export const LUMA_PURCHASE_SUCCESS_URL = "https://lumaplayer.com/#/success";
+
+export const POLAR_LIFETIME_CHECKOUT_URL = "https://buy.polar.sh/polar_cl_6nCmmUMaiUIobDJQ38by5NBBbMoLCcZYigKbi3hncy3?confirmation_url=https%3A%2F%2Flumaplayer.com%2F%23%2Fsuccess";
+export const POLAR_EXCLUSIVE_CHECKOUT_URL = "https://buy.polar.sh/polar_cl_Vwo9lsHRYyoZM4c0OS0me0gmbvVXg4Zkqddn418MuTy?confirmation_url=https%3A%2F%2Flumaplayer.com%2F%23%2Fsuccess";
 
 export const LUMA_LATEST_INSTALLER_URL = "https://github.com/rogue213ss/Luma-Releases/releases/latest/download/Luma-Setup.exe";
 export const LUMA_RELEASES_PAGE_URL = "https://github.com/rogue213ss/Luma-Releases/releases";
@@ -192,7 +195,7 @@ export const FAQS: FAQItem[] = [
   {
     category: 'Licensing & Pricing',
     question: 'How do I receive my license key after purchasing?',
-    answer: 'Immediately upon completing your purchase through Polar, your unique license key (formatted as LUMA-XXXX-XXXX-XXXX-XXXX) and an installer download link are displayed on the confirmation screen and sent directly to your email address by Polar. You can also re-download the latest installer at any time from our official releases repository (https://github.com/rogue213ss/Luma-Releases/releases/latest/download/Luma-Setup.exe) and activate with your key.'
+    answer: 'Immediately upon completing your purchase through Polar, your unique license key (formatted as LUMA-XXXX-XXXX-XXXX-XXXX) and an installer download link are displayed on the confirmation screen and sent directly to your email address by Polar. You are also redirected to our dedicated purchase-success page where you can download Luma-Setup.exe directly (https://github.com/rogue213ss/Luma-Releases/releases/latest/download/Luma-Setup.exe) and activate with your key.'
   },
   {
     category: 'Licensing & Pricing',
